@@ -1,9 +1,14 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
 
-void main() {
+const debug = true;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize(debug: debug);
   runApp(MyApp());
 }
 

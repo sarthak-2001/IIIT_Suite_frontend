@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/notices.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -20,8 +23,6 @@ class NoticeDetail extends StatefulWidget {
 class _NoticeDetailState extends State<NoticeDetail> {
   @override
   Widget build(BuildContext context) {
-    double heightPadding = MediaQuery.of(context).size.height * 0.1;
-    double widthPadding = MediaQuery.of(context).size.width * 0.07;
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBackgroundColour,
@@ -82,8 +83,6 @@ class _NoticeDetailState extends State<NoticeDetail> {
                             Text(
                               'to: ${widget.notice.attention}'.toUpperCase(),
                               textAlign: TextAlign.right,
-//                                  maxLines: 2,
-//                                  overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.w300,
                                   fontSize: 10,
@@ -123,27 +122,45 @@ class _NoticeDetailState extends State<NoticeDetail> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 12),
-                        child: InkWell(
-                          onTap: () {
-                            print('down');
-                          },
-                          child: Container(
-                            height: 52,
-                            width: 52,
-                            decoration: new BoxDecoration(
-                              color: kForegroundColour,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.file_download,
-                              color: kFontColour,
-                              size: 25,
+                      if (widget.notice.attachment != '')
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 12),
+                          child: InkWell(
+                            onTap: () async {
+                              var status = await Permission.storage.status;
+                              if (status.isGranted) {
+                                String encodedUrl =
+                                    Uri.encodeFull(widget.notice.attachment);
+                                await FlutterDownloader.enqueue(
+                                  url: encodedUrl,
+                                  savedDir: '/storage/emulated/0/Download/',
+                                  showNotification:
+                                      true, // show download progress in status bar (for Android)
+                                  openFileFromNotification:
+                                      true, // click on notification to open downloaded file (for Android)
+                                );
+                                Fluttertoast.showToast(
+                                    msg: 'Downloaded',
+                                    toastLength: Toast.LENGTH_LONG);
+                              } else {
+                                await Permission.storage.request();
+                              }
+                            },
+                            child: Container(
+                              height: 52,
+                              width: 52,
+                              decoration: new BoxDecoration(
+                                color: kForegroundColour,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.file_download,
+                                color: kFontColour,
+                                size: 25,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 12),
                         child: InkWell(
