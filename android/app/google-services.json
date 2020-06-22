@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "519400408720",
+    "firebase_url": "https://iiitsuite.firebaseio.com",
+    "project_id": "iiitsuite",
+    "storage_bucket": "iiitsuite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519400408720:android:9d19b7176ed5bdb231ba15",
+        "android_client_info": {
+          "package_name": "com.sarthakbrahma.iiit_suite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519400408720-ihehnkm9fntpiuk0maiprh2gvljgkuu7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarthakbrahma.iiit_suite",
+            "certificate_hash": "b957a5d91eda73eb336b66cdd31c7cb5deb015db"
+          }
+        },
+        {
+          "client_id": "519400408720-4uj91c3nhu2etiuo9ecf6v72fbtut3v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDny-SiRbrruSYKJh3JEI4XAgafH0Q7sKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519400408720-4uj91c3nhu2etiuo9ecf6v72fbtut3v4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
