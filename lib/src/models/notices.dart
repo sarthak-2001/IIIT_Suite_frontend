@@ -4,6 +4,7 @@ class Notices {
   String id, password;
 
   Future<List<Notice>> getNotices() async {
+    print('triggeres');
     List<Notice> notices = [];
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/notices',

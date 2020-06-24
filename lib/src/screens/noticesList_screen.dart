@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
-import 'package:iiit_suite/src/models/notices.dart';
-import 'package:iiit_suite/src/screens/noticeDetails_screen.dart';
+import 'package:iiit_suite/src/controllers/notice_controller.dart';
+import 'package:iiit_suite/src/widgets/noticeList_widget.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -11,13 +12,22 @@ class BounceScroll extends ScrollBehavior {
 }
 
 class NoticeListScreen extends StatefulWidget {
+  NoticeListScreen({Key key}) : super(key: key);
+
   @override
   _NoticeListScreenState createState() => _NoticeListScreenState();
 }
 
-class _NoticeListScreenState extends State<NoticeListScreen> {
-  Future<void> test() async {
-    print('ho');
+class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
+  NoticeController _con;
+  _NoticeListScreenState() : super(NoticeController()) {
+    _con = controller;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -26,7 +36,7 @@ class _NoticeListScreenState extends State<NoticeListScreen> {
       child: Scaffold(
         backgroundColor: kBackgroundColour,
         body: RefreshIndicator(
-          onRefresh: test,
+          onRefresh: _con.refreshNotices,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(21.0, 12, 21, 12),
             child: Column(
@@ -85,121 +95,14 @@ class _NoticeListScreenState extends State<NoticeListScreen> {
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
                         decoration: BoxDecoration(color: kForegroundColour),
-                        child: FutureBuilder(
-                          future: Notices().getNotices(),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              return ScrollConfiguration(
-                                behavior: BounceScroll(),
-                                child: ListView.builder(
-                                  itemCount: snapshot.data.length,
-                                  itemBuilder: (context, index) {
-                                    List<Notice> notices = snapshot.data;
-                                    return InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    NoticeDetail(
-                                                      notice: notices[index],
-                                                    )));
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: IntrinsicHeight(
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Expanded(
-                                                flex: 4,
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Text(
-                                                      '${notices[index].title}'
-                                                          .toUpperCase(),
-                                                      maxLines: 2,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontSize: 15,
-                                                          color: kFontColour),
-                                                    ),
-                                                    Text(
-                                                      'BY: ${notices[index].posted_by}'
-                                                          .toUpperCase(),
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                          fontSize: 10,
-                                                          color: kFontColour),
-                                                    )
-                                                  ],
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 2,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      '${notices[index].date}'
-                                                          .toUpperCase(),
-                                                      textAlign:
-                                                          TextAlign.right,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                          fontSize: 13,
-                                                          color: kFontColour),
-                                                    ),
-                                                    Text(
-                                                      'to: ${notices[index].attention}'
-                                                          .toUpperCase(),
-                                                      textAlign:
-                                                          TextAlign.right,
-                                                      maxLines: 2,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                          fontSize: 10,
-                                                          color: kFontColour),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            } else {
-                              return Center(
+                        child: (_con.notices == null)
+                            ? Center(
                                 child: CircularProgressIndicator(
                                   valueColor: new AlwaysStoppedAnimation<Color>(
                                       kBackgroundColour),
                                 ),
-                              );
-                            }
-                          },
-                        ),
+                              )
+                            : NoticeListWidget(con: _con),
                       ),
                     ),
                   ),

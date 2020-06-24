@@ -38,6 +38,7 @@ dependencies:
   animations: ^1.1.1
   flutter_downloader: ^1.4.4
   permission_handler: ^5.0.1
+  mvc_pattern: 6.0.0
 
 
 dev_dependencies:
