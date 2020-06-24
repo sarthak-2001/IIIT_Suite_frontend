@@ -8,7 +8,7 @@ class DropDownItems extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
+          height: MediaQuery.of(context).size.height * 0.015,
         ),
         DropDownEntries(title: 'Notice board'),
         DropDownEntries(title: 'View Grades'),
@@ -18,7 +18,7 @@ class DropDownItems extends StatelessWidget {
         DropDownEntries(title: 'Library'),
         DropDownEntries(title: 'Student Notice Board'),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
+          height: MediaQuery.of(context).size.height * 0.009,
         ),
       ],
     );

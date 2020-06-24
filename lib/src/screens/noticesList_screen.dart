@@ -247,13 +247,9 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                               onTap: () {
                                 YudizModalSheet.show(
                                     context: context,
-                                    child: IntrinsicHeight(
-                                      child: Container(
-                                        color: kBottomNavColour,
-                                        child: Center(
-                                          child: DropDownItems(),
-                                        ),
-                                      ),
+                                    child: Container(
+                                      color: kBottomNavColour,
+                                      child: DropDownItems(),
                                     ),
                                     direction: YudizModalSheetDirection.TOP);
                               },

@@ -9,11 +9,11 @@ class DropDownEntries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(8.0),
       child: Text(
         '$title'.toUpperCase(),
         style: TextStyle(
-            color: kFontColour, fontSize: 24, fontWeight: FontWeight.w500),
+            color: kFontColour, fontSize: 20, fontWeight: FontWeight.w500),
       ),
     );
   }
