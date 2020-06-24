@@ -18,9 +18,9 @@ class NoticeListWidget extends StatelessWidget {
     return ScrollConfiguration(
       behavior: BounceScroll(),
       child: ListView.builder(
-        itemCount: _con.notices.length,
+        itemCount: NoticeController.notices.length,
         itemBuilder: (context, index) {
-          List<Notice> localNotices = _con.notices;
+          List<Notice> localNotices = NoticeController.notices;
           return InkWell(
             onTap: () {
               Navigator.push(

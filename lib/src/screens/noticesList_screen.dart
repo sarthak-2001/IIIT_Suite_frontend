@@ -28,6 +28,10 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    if (NoticeController.notices == null || NoticeController.notices.isEmpty) {
+      _con.getNoticesList();
+      print('notice reload initiated');
+    }
   }
 
   @override
@@ -95,7 +99,7 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
                         decoration: BoxDecoration(color: kForegroundColour),
-                        child: (_con.notices == null)
+                        child: (NoticeController.notices == null)
                             ? Center(
                                 child: CircularProgressIndicator(
                                   valueColor: new AlwaysStoppedAnimation<Color>(

@@ -4,12 +4,12 @@ import 'package:iiit_suite/src/models/notices.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class NoticeController extends ControllerMVC {
-  List<Notice> notices;
+  static List<Notice> notices;
   GlobalKey<ScaffoldState> scaffoldKey;
 
   NoticeController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
-    getNoticesList();
+//    getNoticesList();
   }
 
   void getNoticesList() async {
