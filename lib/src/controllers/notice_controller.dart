@@ -9,7 +9,6 @@ class NoticeController extends ControllerMVC {
 
   NoticeController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
-//    getNoticesList();
   }
 
   void getNoticesList() async {

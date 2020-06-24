@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
 
@@ -39,13 +40,12 @@ class _MyAppState extends State<MyApp> {
     _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
       print('on message $message');
-      setState(() => _message = message["notification"]["title"]);
+      Fluttertoast.showToast(
+          msg: 'Refresh to Get New Notices', toastLength: Toast.LENGTH_LONG);
     }, onResume: (Map<String, dynamic> message) async {
       print('on resume $message');
-      setState(() => _message = message["notification"]["title"]);
     }, onLaunch: (Map<String, dynamic> message) async {
       print('on launch $message');
-      setState(() => _message = message["notification"]["title"]);
     });
   }
 

@@ -6,8 +6,6 @@ import 'package:iiit_suite/src/screens/mess_screen.dart';
 import 'package:iiit_suite/src/screens/noticesList_screen.dart';
 
 class Pages extends StatefulWidget {
-  final Widget page;
-  Pages({this.page});
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   _PagesState createState() => _PagesState();
@@ -15,8 +13,22 @@ class Pages extends StatefulWidget {
 
 class _PagesState extends State<Pages> {
   int _curIndex = 0;
+  PageController _pageController;
 
-  List<Widget> tabs = [NoticeListScreen(), MessScreen(), ITSScreen()];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,7 +69,17 @@ class _PagesState extends State<Pages> {
               ),
             ],
           ),
-          body: tabs[_curIndex],
+          body: SizedBox.expand(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _curIndex = index;
+                });
+              },
+              children: <Widget>[NoticeListScreen(), MessScreen(), ITSScreen()],
+            ),
+          ),
         ),
       ),
     );
