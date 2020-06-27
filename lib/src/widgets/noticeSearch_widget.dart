@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/notice_controller.dart';
 import 'package:iiit_suite/src/models/notices.dart';
-import 'package:iiit_suite/src/screens/noticeDetails_screen.dart';
+import 'package:iiit_suite/src/screens/mums/noticeDetails_screen.dart';
 import 'package:route_transitions/route_transitions.dart';
 import 'package:search_page/search_page.dart';
 

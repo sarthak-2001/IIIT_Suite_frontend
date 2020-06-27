@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/screens/its_screen.dart';
 import 'package:iiit_suite/src/screens/mess_screen.dart';
-import 'package:iiit_suite/src/screens/noticesList_screen.dart';
+import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
 
 class Pages extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
