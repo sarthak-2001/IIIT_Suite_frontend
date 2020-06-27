@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/constants.dart';
-import 'package:iiit_suite/src/models/notices.dart';
+import 'package:iiit_suite/src/models/bookmark.dart';
+import 'package:iiit_suite/src/repository/notice_repository.dart';
 import 'package:iiit_suite/src/widgets/mums_drawer_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -13,7 +15,7 @@ class BounceScroll extends ScrollBehavior {
 }
 
 class NoticeDetail extends StatefulWidget {
-  final Notice notice;
+  final dynamic notice;
   NoticeDetail({
     @required this.notice,
   });
@@ -22,6 +24,18 @@ class NoticeDetail extends StatefulWidget {
 }
 
 class _NoticeDetailState extends State<NoticeDetail> {
+  bool isBookmarked;
+  @override
+  void initState() {
+    super.initState();
+    BookmarkDao().isPresent(widget.notice.id).then((value) {
+      setState(() {
+        isBookmarked = value;
+      });
+    });
+//    print(isBookmarked);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -188,8 +202,32 @@ class _NoticeDetailState extends State<NoticeDetail> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 12),
                         child: InkWell(
-                          onTap: () {
-                            print('bookmark');
+                          onTap: () async {
+                            if (isBookmarked == false) {
+                              await Provider.of<BookmarkDao>(context).insert(
+                                Bookmark(
+                                    title: widget.notice.title,
+                                    attention: widget.notice.attention,
+                                    attachment: widget.notice.attachment,
+                                    date: widget.notice.date,
+                                    content: widget.notice.content,
+                                    posted_by: widget.notice.posted_by,
+                                    id_link: widget.notice.id_link,
+                                    id: widget.notice.id),
+                              );
+                              setState(() {
+                                isBookmarked = true;
+                              });
+                              Fluttertoast.showToast(
+                                  msg: 'Bookmarked',
+                                  toastLength: Toast.LENGTH_SHORT);
+                            } else {
+                              await Provider.of<BookmarkDao>(context)
+                                  .delete(widget.notice.id);
+                              setState(() {
+                                isBookmarked = false;
+                              });
+                            }
                           },
                           child: Container(
                             height: 52,
@@ -198,11 +236,17 @@ class _NoticeDetailState extends State<NoticeDetail> {
                               color: kForegroundColour,
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(
-                              Icons.bookmark_border,
-                              color: kFontColour,
-                              size: 25,
-                            ),
+                            child: isBookmarked == false
+                                ? Icon(
+                                    Icons.bookmark_border,
+                                    color: kFontColour,
+                                    size: 25,
+                                  )
+                                : Icon(
+                                    Icons.bookmark,
+                                    color: kFontColour,
+                                    size: 25,
+                                  ),
                           ),
                         ),
                       ),

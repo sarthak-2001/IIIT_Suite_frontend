@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
-import 'package:iiit_suite/src/controllers/notice_controller.dart';
-import 'package:iiit_suite/src/models/notice.dart';
+import 'package:iiit_suite/src/models/bookmark.dart';
 import 'package:iiit_suite/src/screens/mums/noticeDetails_screen.dart';
 import 'package:route_transitions/route_transitions.dart';
 
-class NoticeListWidget extends StatelessWidget {
-  const NoticeListWidget({
-    Key key,
-    @required NoticeController con,
-  })  : _con = con,
-        super(key: key);
-
-  final NoticeController _con;
+class BookmarkListWidget extends StatelessWidget {
+  final List<Bookmark> bookmarks;
+  BookmarkListWidget({this.bookmarks});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +15,9 @@ class NoticeListWidget extends StatelessWidget {
       child: Scrollbar(
         isAlwaysShown: false,
         child: ListView.builder(
-          itemCount: NoticeController.notices.length,
+          itemCount: bookmarks.length,
           itemBuilder: (context, index) {
-            List<Notice> localNotices = NoticeController.notices;
+            List<Bookmark> localNotices = bookmarks;
             return InkWell(
               onTap: () {
                 Navigator.push(

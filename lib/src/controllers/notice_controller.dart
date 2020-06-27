@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iiit_suite/src/models/notices.dart';
+import 'package:iiit_suite/src/models/notice.dart';
+import 'package:iiit_suite/src/repository/notice_repository.dart' as Repo;
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class NoticeController extends ControllerMVC {
@@ -11,7 +12,7 @@ class NoticeController extends ControllerMVC {
   }
 
   void getNoticesList() async {
-    List<Notice> n = await Notices().getNotices();
+    List<Notice> n = await Repo.getNotices();
     setState(() => notices = n);
   }
 
