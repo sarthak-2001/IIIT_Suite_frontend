@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
 
 const debug = true;
@@ -55,11 +56,13 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'IIIT Suite',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
+          hintColor: kFontColour,
+          backgroundColor: kForegroundColour,
+          scaffoldBackgroundColor: kForegroundColour),
       home: Pages(),
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 
-class DropDownEntries extends StatelessWidget {
+class DrawerEntries extends StatelessWidget {
   final String title;
 
-  const DropDownEntries({Key key, @required this.title}) : super(key: key);
+  const DrawerEntries({Key key, @required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DropDownEntries extends StatelessWidget {
       child: Text(
         '$title'.toUpperCase(),
         style: TextStyle(
-            color: kFontColour, fontSize: 20, fontWeight: FontWeight.w500),
+            color: kFontColour, fontSize: 18, fontWeight: FontWeight.w500),
       ),
     );
   }

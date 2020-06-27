@@ -18,49 +18,52 @@ class _PagesState extends State<Pages> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SafeArea(
-        child: Scaffold(
-            bottomNavigationBar: Container(
-              height: MediaQuery.of(context).size.height * 0.073,
-              color: kBottomNavColour,
-              child: BottomNavyBar(
-                selectedIndex: _curIndex,
-                containerHeight: MediaQuery.of(context).size.height * 0.072,
-                showElevation: true,
-                backgroundColor: kBottomNavColour,
-                itemCornerRadius: 100,
-                curve: Curves.easeInCirc,
-                animationDuration: Duration(milliseconds: 200),
-                onItemSelected: (index) {
-                  print(index);
-                  setState(() {
-                    _curIndex = index;
-                  });
-                },
-                items: [
-                  BottomNavyBarItem(
-                    icon: Icon(Icons.home),
-                    title: Text('HOME'),
-                    activeColor: Colors.white70,
-                    textAlign: TextAlign.center,
-                  ),
-                  BottomNavyBarItem(
-                    icon: Icon(Icons.restaurant),
-                    title: Text('MESS'),
-                    activeColor: Colors.white70,
-                    textAlign: TextAlign.center,
-                  ),
-                  BottomNavyBarItem(
-                    icon: Icon(Icons.swap_vert),
-                    title: Text('ITS'),
-                    activeColor: Colors.white70,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Container(
+        child: SafeArea(
+          child: Scaffold(
+              bottomNavigationBar: Container(
+                height: MediaQuery.of(context).size.height * 0.073,
+                color: kBottomNavColour,
+                child: BottomNavyBar(
+                  selectedIndex: _curIndex,
+                  containerHeight: MediaQuery.of(context).size.height * 0.072,
+                  showElevation: true,
+                  backgroundColor: kBottomNavColour,
+                  itemCornerRadius: 100,
+                  curve: Curves.easeInCirc,
+                  animationDuration: Duration(milliseconds: 200),
+                  onItemSelected: (index) {
+                    print(index);
+                    setState(() {
+                      _curIndex = index;
+                    });
+                  },
+                  items: [
+                    BottomNavyBarItem(
+                      icon: Icon(Icons.home),
+                      title: Text('HOME'),
+                      activeColor: Colors.white70,
+                      textAlign: TextAlign.center,
+                    ),
+                    BottomNavyBarItem(
+                      icon: Icon(Icons.restaurant),
+                      title: Text('MESS'),
+                      activeColor: Colors.white70,
+                      textAlign: TextAlign.center,
+                    ),
+                    BottomNavyBarItem(
+                      icon: Icon(Icons.swap_vert),
+                      title: Text('ITS'),
+                      activeColor: Colors.white70,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            body: tabs[_curIndex]),
+              body: tabs[_curIndex]),
+        ),
       ),
     );
   }

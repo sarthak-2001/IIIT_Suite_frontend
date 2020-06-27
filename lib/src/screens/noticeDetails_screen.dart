@@ -3,6 +3,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/notices.dart';
+import 'package:iiit_suite/src/widgets/mums_drawer_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class BounceScroll extends ScrollBehavior {
@@ -26,6 +27,8 @@ class _NoticeDetailState extends State<NoticeDetail> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBackgroundColour,
+        endDrawerEnableOpenDragGesture: true,
+        endDrawer: MumsDrawerWidget(),
         body: Container(
           color: kForegroundColour,
           child: Column(
