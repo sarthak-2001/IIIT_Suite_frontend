@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
@@ -20,12 +21,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _message = '';
-
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   _register() {
     _firebaseMessaging.getToken().then((token) => print(token));
+  }
+
+  _checkConnection() {
+    Connectivity().checkConnectivity().then((connectivityResult) => {
+          if (connectivityResult == ConnectivityResult.none)
+            {
+              Fluttertoast.showToast(
+                  msg: 'Connect to Internet', toastLength: Toast.LENGTH_LONG)
+            }
+        });
   }
 
   @override
@@ -33,6 +42,7 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     _register();
+    _checkConnection();
     getMessage();
     _firebaseMessaging.subscribeToTopic("all");
   }
