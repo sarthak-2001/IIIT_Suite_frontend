@@ -3,8 +3,8 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/bookmark.dart';
-import 'package:iiit_suite/src/repository/notice_repository.dart';
-import 'package:iiit_suite/src/widgets/mums_drawer_widget.dart';
+import 'package:iiit_suite/src/repository/bookmark_repository.dart';
+import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 

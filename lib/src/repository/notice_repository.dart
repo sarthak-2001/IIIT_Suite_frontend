@@ -1,59 +1,39 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/config/app_database.dart';
-import 'package:iiit_suite/src/models/bookmark.dart';
 import 'package:iiit_suite/src/models/notice.dart';
 import 'package:sembast/sembast.dart';
 
-class BookmarkDao extends ChangeNotifier {
-  static const String STORE_NAME = 'bookmark';
-  final _bookmarkStore = intMapStoreFactory.store(STORE_NAME);
+class NoticeDao {
+  static const String STORE_NAME = 'notice';
+  final _noticeStore = intMapStoreFactory.store(STORE_NAME);
 
   Future<Database> get _db async => await AppDatabase.instance.database;
-  Future insert(Bookmark notice) async {
-    await _bookmarkStore.add(await _db, notice.toMap());
-    notifyListeners();
+
+  Future insert(Notice notice) async {
+    final finder = Finder(filter: Filter.equals('id', notice.id));
+    var isUpdated =
+        await _noticeStore.update(await _db, notice.toMap(), finder: finder);
+    if (isUpdated == 0) {
+      await _noticeStore.add(await _db, notice.toMap());
+    }
   }
 
-  Future delete(int ID) async {
-    final finder = Finder(filter: Filter.equals('id', ID));
-    await _bookmarkStore.delete(
-      await _db,
-      finder: finder,
-    );
-    notifyListeners();
-  }
-
-  Future<List<Bookmark>> getAllSortedByID() async {
+  Future<List<Notice>> getAllSortedByID() async {
     var finder = Finder(sortOrders: [SortOrder('id')]);
-    final recordSnapshots = await _bookmarkStore.find(
+    final recordSnapshots = await _noticeStore.find(
       await _db,
       finder: finder,
     );
-    // Making a List<Fruit> out of List<RecordSnapshot>
     return recordSnapshots.map((snapshot) {
-      final notice = Bookmark.fromMap(snapshot.value);
-      // An ID is a key of a record from the database.
+      final notice = Notice.fromMap(snapshot.value);
       notice.db_id = snapshot.key;
       return notice;
     }).toList();
-    notifyListeners();
   }
 
-  Future<bool> isPresent(int ID) async {
-    final finder = Finder(filter: Filter.equals('id', ID));
-    try {
-      final recordSnapshots = await _bookmarkStore.findFirst(
-        await _db,
-        finder: finder,
-      );
-      final notice = Bookmark.fromMap(recordSnapshots.value);
-      return true;
-    } catch (e) {
-      return false;
-    }
-//    return notice;
+  Future deleteDB() async {
+    await _noticeStore.drop(await _db);
   }
 }
 
@@ -74,11 +54,26 @@ Future<List<Notice>> getNotices() async {
           title: n['title'],
           posted_by: n['posted_by'],
           content: n['content']));
+
+      NoticeDao().insert(Notice(
+          attachment: n['attachment'],
+          attention: n['attention'],
+          date: n['date'],
+          id: n['id'],
+          id_link: n['id_link'],
+          title: n['title'],
+          posted_by: n['posted_by'],
+          content: n['content']));
     }
+    //
+//    await NoticeDao().deleteDB();
+    //
+    print('fetched notices');
     return notices;
   } catch (e) {
+    print('error in notice repo getNoticces()');
     Fluttertoast.showToast(
         msg: 'Connect to Internet', toastLength: Toast.LENGTH_LONG);
-    return [];
+    return null;
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/bookmark.dart';
-import 'package:iiit_suite/src/repository/notice_repository.dart';
-import 'package:iiit_suite/src/widgets/bookmarkList_widget.dart';
-import 'package:iiit_suite/src/widgets/mums_drawer_widget.dart';
+import 'package:iiit_suite/src/repository/bookmark_repository.dart';
+import 'package:iiit_suite/src/widgets/mums/bookmarkList_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:provider/provider.dart';
 
 class BounceScroll extends ScrollBehavior {

@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/notice_controller.dart';
-import 'package:iiit_suite/src/widgets/mums_drawer_widget.dart';
-import 'package:iiit_suite/src/widgets/noticeList_widget.dart';
-import 'package:iiit_suite/src/widgets/noticeSearch_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/cachedNoticelist_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/noticeList_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/noticeSearch_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class BounceScroll extends ScrollBehavior {
@@ -116,12 +117,7 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                       child: Container(
                         decoration: BoxDecoration(color: kForegroundColour),
                         child: (NoticeController.notices == null)
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  valueColor: new AlwaysStoppedAnimation<Color>(
-                                      kBackgroundColour),
-                                ),
-                              )
+                            ? CachedNoticeListWidget()
                             : NoticeListWidget(con: _con),
                       ),
                     ),

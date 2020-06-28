@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
-import 'package:iiit_suite/src/widgets/drawerItems_mums_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/drawerItems_mums_widget.dart';
 
 class MumsDrawerWidget extends StatelessWidget {
   @override
