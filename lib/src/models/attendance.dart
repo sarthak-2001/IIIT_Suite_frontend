@@ -1,7 +1,7 @@
 class Attendance {
   String subject, last_updated, coid;
   int total_days, days_present;
-
+  int db_id;
   Attendance(
       {this.coid,
       this.days_present,

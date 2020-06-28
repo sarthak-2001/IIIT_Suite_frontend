@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iiit_suite/src/screens/api_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeBookmark_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
 import 'package:iiit_suite/src/widgets/drawerEntries_widget.dart';
@@ -11,6 +12,10 @@ class DrawerItemsMums extends StatelessWidget {
       children: <Widget>[
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.015,
+        ),
+        DrawerEntries(
+          title: 'Test board',
+          route: Testing(),
         ),
         DrawerEntries(
           title: 'Notice board',
