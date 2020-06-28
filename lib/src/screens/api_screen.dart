@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/repository/attendance_repository.dart';
+import 'package:iiit_suite/src/repository/grade_repository.dart';
 
 class Testing extends StatelessWidget {
   @override
@@ -12,6 +13,12 @@ class Testing extends StatelessWidget {
               await getAttendance();
             },
             child: Text('Attenance'),
+          ),
+          RaisedButton(
+            onPressed: () async {
+              await getGrade();
+            },
+            child: Text('grade'),
           )
         ],
       ),
