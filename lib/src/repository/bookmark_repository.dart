@@ -28,10 +28,8 @@ class BookmarkDao extends ChangeNotifier {
       await _db,
       finder: finder,
     );
-    // Making a List<Fruit> out of List<RecordSnapshot>
     return recordSnapshots.map((snapshot) {
       final notice = Bookmark.fromMap(snapshot.value);
-      // An ID is a key of a record from the database.
       notice.db_id = snapshot.key;
       return notice;
     }).toList();
