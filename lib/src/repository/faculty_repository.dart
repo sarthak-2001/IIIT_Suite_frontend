@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/faculty.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
 
 Future<List<Faculty>> getFaculty() async {
+  String id = await getId();
+  String password = await getPassword();
   print('faculty trigger');
   List<Faculty> faculties = [];
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/facList',
-        data: {"uid": "b418045", "pwd": "kitu@2001"});
+        data: {"uid": id, "pwd": password});
     for (var map in response.data['faculty']) {
       faculties.add(Faculty(
           id: map['id'],
@@ -33,14 +36,13 @@ Future<List<Faculty>> getFaculty() async {
 }
 
 Future<String> getFacultyImage() async {
+  String id = await getId();
+  String password = await getPassword();
   String link;
   try {
-    Response response = await Dio()
-        .post('https://sarthak-mums-iiit.herokuapp.com/facimg', data: {
-      "uid": "b418045",
-      "pwd": "kitu@2001",
-      "link": "facDet.php?facid=1056"
-    });
+    Response response = await Dio().post(
+        'https://sarthak-mums-iiit.herokuapp.com/facimg',
+        data: {"uid": id, "pwd": password, "link": "facDet.php?facid=1056"});
 
     link = response.data['link'];
     print('fetched link');

@@ -45,6 +45,7 @@ dependencies:
   connectivity: ^0.4.8+6
   sembast: ^2.4.5
   provider: ^3.1.0
+  shared_preferences: ^0.5.7+3
 
 
 dev_dependencies:

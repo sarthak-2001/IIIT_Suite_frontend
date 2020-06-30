@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
+import 'package:iiit_suite/src/screens/login_screen.dart';
 
-class DrawerEntries extends StatelessWidget {
-  final String title;
-  final dynamic route;
-
-  const DrawerEntries({Key key, @required this.title, this.route})
-      : super(key: key);
+class DrawerLogOutEntry extends StatelessWidget {
+  const DrawerLogOutEntry({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: () async {
         Navigator.pop(context);
-        if (route != null)
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => route));
+
+        await logout();
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
       },
       child: Container(
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(14.0),
           child: Text(
-            '$title'.toUpperCase(),
+            'logout'.toUpperCase(),
             style: TextStyle(
                 color: kFontColour, fontSize: 16, fontWeight: FontWeight.w500),
           ),

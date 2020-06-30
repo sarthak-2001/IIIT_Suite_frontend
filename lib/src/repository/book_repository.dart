@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/books.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
 
 Future<List<Book>> getBooks(String string) async {
   List<Book> books = [];
+  String id = await getId();
+  String password = await getPassword();
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/booksrch',
-        data: {"uid": "b418045", "pwd": "kitu@2001", "search": string});
+        data: {"uid": id, "pwd": password, "search": string});
     for (var n in response.data['books']) {
       books.add(Book(
         id: n['id'],

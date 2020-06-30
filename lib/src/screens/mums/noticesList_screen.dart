@@ -7,6 +7,7 @@ import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/noticeList_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/noticeSearch_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -29,9 +30,17 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
     _con = controller;
   }
 
+  String id = '';
+
+  Future getId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    id = prefs.getString('id');
+  }
+
   @override
   void initState() {
     super.initState();
+    getId();
     if (NoticeController.notices == null || NoticeController.notices.isEmpty) {
       _con.getNoticesList();
       print('notice reload initiated');
@@ -69,7 +78,7 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                                 fontWeight: FontWeight.w500),
                             children: <TextSpan>[
                               TextSpan(
-                                  text: "B418045",
+                                  text: "$id",
                                   style: TextStyle(
                                       fontStyle: FontStyle.normal,
                                       height: 1,

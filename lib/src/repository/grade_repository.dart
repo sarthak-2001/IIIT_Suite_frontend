@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/grades.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
 
 Future<List<Grade>> getGrade() async {
   print('grrade trigger');
+  String id = await getId();
+  String password = await getPassword();
   List<Grade> grades = [];
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/grades',
-        data: {"uid": "b418045", "pwd": "kitu@2001", "sem": "3"});
+        data: {"uid": id, "pwd": password, "sem": "3"});
     for (var map in response.data['grades']) {
       grades.add(Grade(
           subject: map['subject'],

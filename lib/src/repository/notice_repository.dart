@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/config/app_database.dart';
 import 'package:iiit_suite/src/models/notice.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
 import 'package:sembast/sembast.dart';
 
 class NoticeDao {
@@ -38,12 +39,14 @@ class NoticeDao {
 }
 
 Future<List<Notice>> getNotices() async {
+  String id = await getId();
+  String password = await getPassword();
   print('triggeres');
   List<Notice> notices = [];
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/notices',
-        data: {"uid": "b418045", "pwd": "kitu@2001"});
+        data: {"uid": id, "pwd": password});
     for (var n in response.data) {
       notices.add(Notice(
           attachment: n['attachment'],
