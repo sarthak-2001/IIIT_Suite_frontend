@@ -46,6 +46,7 @@ dependencies:
   sembast: ^2.4.5
   provider: ^3.1.0
   shared_preferences: ^0.5.7+3
+  flutter_html: ^1.0.0
 
 
 dev_dependencies:

@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/faculty.dart';
-import 'package:iiit_suite/src/repository/user_repository.dart';
+import 'package:iiit_suite/src/models/user.dart';
 
 Future<List<Faculty>> getFaculty() async {
-  String id = await getId();
-  String password = await getPassword();
+  String id = User().getId();
+  String password = User().getPassword();
+  print(id);
   print('faculty trigger');
   List<Faculty> faculties = [];
   try {
@@ -19,13 +20,11 @@ Future<List<Faculty>> getFaculty() async {
           link: map['link'],
           name: map['name']));
     }
-    //
-//    await NoticeDao().deleteDB();
-    //
+
     print('fetched faculty');
-//    for (Faculty a in faculties) {
-//      print(a.name);
-//    }
+    for (Faculty a in faculties) {
+      print(a.name);
+    }
     return faculties;
   } catch (e) {
     print(e);
@@ -36,8 +35,8 @@ Future<List<Faculty>> getFaculty() async {
 }
 
 Future<String> getFacultyImage() async {
-  String id = await getId();
-  String password = await getPassword();
+  String id = User().getId();
+  String password = User().getPassword();
   String link;
   try {
     Response response = await Dio().post(

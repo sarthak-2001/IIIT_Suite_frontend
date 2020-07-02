@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/student.dart';
-import 'package:iiit_suite/src/repository/user_repository.dart';
+import 'package:iiit_suite/src/models/user.dart';
 
 Future<List<Student>> getStudents(String string) async {
-  String id = await getId();
-  String password = await getPassword();
+  String id = User().getId();
+  String password = User().getPassword();
   List<Student> students = [];
   try {
     Response response = await Dio().post(

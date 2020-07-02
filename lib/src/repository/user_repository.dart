@@ -27,16 +27,16 @@ Future logout() async {
   await prefs.remove('password');
 }
 
-Future<String> getId() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String id;
-  id = prefs.getString('id');
-  return id;
-}
-
-Future<String> getPassword() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String pass;
-  pass = prefs.getString('password');
-  return pass;
-}
+//Future<String> getId() async{
+//  SharedPreferences prefs = await SharedPreferences.getInstance();
+//  String id;
+//  id =  prefs.getString('id');
+//  return id;
+//}
+//
+//Future<String> getPassword() async{
+//  SharedPreferences prefs = await SharedPreferences.getInstance();
+//  String pass;
+//  pass =  prefs.getString('password');
+//  return pass;
+//}

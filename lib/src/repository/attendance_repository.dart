@@ -1,17 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/attendance.dart';
-import 'package:iiit_suite/src/repository/user_repository.dart';
+import 'package:iiit_suite/src/models/user.dart';
 
 Future<List<Attendance>> getAttendance() async {
   print('attendance trigger');
-  String id = await getId();
-  String password = await getPassword();
+  String id = User().getId();
+  String password = User().getPassword();
+  print(id);
+  print(password);
   List<Attendance> attendances = [];
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/attendance',
-        data: {"uid": id, "pwd": password, "sem": "4"});
+        data: {"uid": id, "pwd": password});
     for (var n in response.data['Attendance']) {
       attendances.add(Attendance(
           coid: n['coid'],
@@ -29,6 +31,7 @@ Future<List<Attendance>> getAttendance() async {
     }
     return attendances;
   } catch (e) {
+    print(e);
     print('error in notice repo getAttendance()');
     Fluttertoast.showToast(
         msg: 'Connect to Internet', toastLength: Toast.LENGTH_LONG);

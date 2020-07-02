@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/notice_controller.dart';
+import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/widgets/mums/cachedNoticelist_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/noticeList_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/noticeSearch_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -32,9 +32,8 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
 
   String id = '';
 
-  Future getId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    id = prefs.getString('id');
+  void getId() {
+    id = User().getId();
   }
 
   @override

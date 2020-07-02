@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/constants.dart';
+import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/repository/user_repository.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,7 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
   void check_logged_in() async {
     SharedPreferences loginData = await SharedPreferences.getInstance();
     String id = loginData.getString('id');
+    String password = loginData.getString('password');
     if (id != null) {
+      User().write(id, password);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Pages()));
     }
@@ -224,6 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       await SharedPreferences.getInstance();
                                   prefs.setString('id', _id.text);
                                   prefs.setString('password', _pass.text);
+                                  User().write(_id.text, _pass.text);
 
                                   setState(() {
                                     working = false;
