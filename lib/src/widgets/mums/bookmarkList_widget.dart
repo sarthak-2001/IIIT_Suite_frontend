@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/bookmark.dart';
+import 'package:iiit_suite/src/screens/mums/intranetResourcesDetailes_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeDetails_screen.dart';
 import 'package:route_transitions/route_transitions.dart';
+
+class BounceScroll extends ScrollBehavior {
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) =>
+      BouncingScrollPhysics();
+}
 
 class BookmarkListWidget extends StatelessWidget {
   final List<Bookmark> bookmarks;
@@ -26,9 +33,14 @@ class BookmarkListWidget extends StatelessWidget {
                         maintainState: true,
                         curves: Curves.easeInCubic,
                         animationType: AnimationType.fade,
-                        builder: (context) => NoticeDetail(
-                              notice: localNotices[index],
-                            )));
+                        builder: (context) =>
+                            localNotices[index].content.startsWith('<')
+                                ? IntraNoticeDetail(
+                                    notice: localNotices[index],
+                                  )
+                                : NoticeDetail(
+                                    notice: localNotices[index],
+                                  )));
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),

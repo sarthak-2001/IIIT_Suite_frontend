@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
-import 'package:iiit_suite/src/controllers/notice_controller.dart';
+import 'package:iiit_suite/src/controllers/intraNotice_controller.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/mums/cachedNoticelist_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/noticeList_widget.dart';
-import 'package:iiit_suite/src/widgets/mums/noticeSearch_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class BounceScroll extends ScrollBehavior {
@@ -15,18 +13,18 @@ class BounceScroll extends ScrollBehavior {
       BouncingScrollPhysics();
 }
 
-class NoticeListScreen extends StatefulWidget {
-  NoticeListScreen({Key key}) : super(key: key);
+class IntraNoticeListScreen extends StatefulWidget {
+  IntraNoticeListScreen({Key key}) : super(key: key);
 
   @override
-  _NoticeListScreenState createState() => _NoticeListScreenState();
+  _IntraNoticeListScreenState createState() => _IntraNoticeListScreenState();
 }
 
-class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
-  NoticeController _con;
+class _IntraNoticeListScreenState extends StateMVC<IntraNoticeListScreen> {
+  IntraNoticeController _con;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  _NoticeListScreenState() : super(NoticeController()) {
+  _IntraNoticeListScreenState() : super(IntraNoticeController()) {
     _con = controller;
   }
 
@@ -40,7 +38,8 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
   void initState() {
     super.initState();
     getId();
-    if (NoticeController.notices == null || NoticeController.notices.isEmpty) {
+    if (IntraNoticeController.notices == null ||
+        IntraNoticeController.notices.isEmpty) {
       _con.getNoticesList();
       print('notice reload initiated');
     }
@@ -69,28 +68,17 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                         flex: 9,
                         child: RichText(
                           text: TextSpan(
-                            text: "HELLO\n",
+                            text: "Intranet Resources",
                             style: TextStyle(
                                 color: kFontColour,
                                 fontStyle: FontStyle.normal,
                                 fontSize: 26,
                                 fontWeight: FontWeight.w500),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: "$id",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.normal,
-                                      height: 1,
-                                      color: kFontColour,
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.w800))
-                            ],
                           ),
                         ),
                       ),
                       Row(
                         children: <Widget>[
-                          noticeSearchWidget(),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: InkWell(
@@ -124,9 +112,9 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
                         decoration: BoxDecoration(color: kForegroundColour),
-                        child: (NoticeController.notices == null)
-                            ? CachedNoticeListWidget()
-                            : NoticeListWidget(con: 1),
+                        child: (IntraNoticeController.notices == null)
+                            ? Center(child: CircularProgressIndicator())
+                            : NoticeListWidget(con: 0),
                       ),
                     ),
                   ),
