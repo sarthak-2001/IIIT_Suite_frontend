@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    check_logged_in();
+//    check_logged_in();
   }
 
   @override
@@ -31,17 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
     _id.dispose();
     _pass.dispose();
     super.dispose();
-  }
-
-  void check_logged_in() async {
-    SharedPreferences loginData = await SharedPreferences.getInstance();
-    String id = loginData.getString('id');
-    String password = loginData.getString('password');
-    if (id != null) {
-      User().write(id, password);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Pages()));
-    }
   }
 
   void _showModalSheet() {
