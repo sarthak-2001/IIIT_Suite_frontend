@@ -5,6 +5,7 @@ import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/repository/user_repository.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
+import 'package:route_transitions/route_transitions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -226,7 +227,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Fluttertoast.showToast(msg: "Logged In");
                                   Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(
+                                      PageRouteTransition(
+                                          animationType: AnimationType.scale,
                                           builder: (context) => Pages()));
                                 } else {
                                   print('Wrong stuff');

@@ -27,3 +27,25 @@ Future<List<Student>> getStudents(String string) async {
     return [];
   }
 }
+
+Future<String> getStudentImage(String link1) async {
+  print(link1);
+  String id = User().getId();
+  String password = User().getPassword();
+  String link;
+  try {
+    Response response = await Dio().post(
+        'https://sarthak-mums-iiit.herokuapp.com/stuimg',
+        data: {"uid": id, "pwd": password, "link": link1});
+
+    link = response.data['link'];
+    print('fetched link');
+    print(link);
+    return link;
+  } catch (e) {
+    print(e);
+    Fluttertoast.showToast(
+        msg: 'Connect to Internet', toastLength: Toast.LENGTH_LONG);
+    return null;
+  }
+}

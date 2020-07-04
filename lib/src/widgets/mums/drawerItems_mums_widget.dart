@@ -3,6 +3,7 @@ import 'package:iiit_suite/src/screens/api_screen.dart';
 import 'package:iiit_suite/src/screens/mums/intranetResources_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeBookmark_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
+import 'package:iiit_suite/src/screens/mums/studentSearch_screen.dart';
 import 'package:iiit_suite/src/widgets/drawerEntries_widget.dart';
 import 'package:iiit_suite/src/widgets/drawerLogOut_entry.dart';
 
@@ -35,7 +36,10 @@ class DrawerItemsMums extends StatelessWidget {
           DrawerEntries(title: 'Student Notice Board'),
           DrawerEntries(title: 'View Grades'),
           DrawerEntries(title: 'View attendance'),
-          DrawerEntries(title: 'Student Search'),
+          DrawerEntries(
+            title: 'Student Search',
+            route: StudentSearchScreen(),
+          ),
           DrawerEntries(title: 'Faculty Search'),
           DrawerEntries(title: 'Library'),
           Divider(
