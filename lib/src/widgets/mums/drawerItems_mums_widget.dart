@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/screens/api_screen.dart';
+import 'package:iiit_suite/src/screens/mums/bookSearch_screen.dart';
 import 'package:iiit_suite/src/screens/mums/intranetResources_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeBookmark_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
@@ -41,7 +42,10 @@ class DrawerItemsMums extends StatelessWidget {
             route: StudentSearchScreen(),
           ),
           DrawerEntries(title: 'Faculty Search'),
-          DrawerEntries(title: 'Library'),
+          DrawerEntries(
+            title: 'Book Search',
+            route: BookSearchScreen(),
+          ),
           Divider(
             color: Colors.white24,
             thickness: 1.5,
