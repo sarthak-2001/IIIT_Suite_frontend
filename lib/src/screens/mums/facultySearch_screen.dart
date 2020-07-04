@@ -49,6 +49,8 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
     items.addAll(FacultyController.faculties);
   }
 
+  //Logic to search custom objects
+
   void filterSearchResults(String query) {
     List<Faculty> dummySearchList = List<Faculty>();
     dummySearchList.addAll(FacultyController.faculties);
@@ -74,6 +76,8 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
       });
     }
   }
+
+  //UI starts here
 
   @override
   Widget build(BuildContext context) {
