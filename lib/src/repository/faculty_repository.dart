@@ -22,9 +22,17 @@ Future<List<Faculty>> getFaculty() async {
     }
 
     print('fetched faculty');
+    print(faculties.length);
     for (Faculty a in faculties) {
       print(a.name);
     }
+
+    faculties.sort((a, b) {
+      return a.dept
+          .toString()
+          .toLowerCase()
+          .compareTo(b.dept.toString().toLowerCase());
+    });
     return faculties;
   } catch (e) {
     print(e);

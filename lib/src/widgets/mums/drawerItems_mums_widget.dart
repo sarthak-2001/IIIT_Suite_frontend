@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/screens/api_screen.dart';
 import 'package:iiit_suite/src/screens/mums/bookSearch_screen.dart';
+import 'package:iiit_suite/src/screens/mums/facultySearch_screen.dart';
 import 'package:iiit_suite/src/screens/mums/intranetResources_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeBookmark_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
@@ -41,7 +42,10 @@ class DrawerItemsMums extends StatelessWidget {
             title: 'Student Search',
             route: StudentSearchScreen(),
           ),
-          DrawerEntries(title: 'Faculty Search'),
+          DrawerEntries(
+            title: 'Faculty Search',
+            route: FacultySearchScreen(),
+          ),
           DrawerEntries(
             title: 'Book Search',
             route: BookSearchScreen(),
