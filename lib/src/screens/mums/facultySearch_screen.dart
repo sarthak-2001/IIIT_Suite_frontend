@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/faculty_controller.dart';
 import 'package:iiit_suite/src/models/faculty.dart';
 import 'package:iiit_suite/src/models/user.dart';
+import 'package:iiit_suite/src/repository/faculty_repository.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -39,6 +42,45 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
 
   var items = List<Faculty>();
 
+  void _showDialog(Faculty faculty) async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(
+            "${faculty.name}",
+            textAlign: TextAlign.center,
+          ),
+          content: FutureBuilder<String>(
+              future: getFacultyImage(faculty.link),
+              builder: (context, snapshot) {
+                return snapshot.hasData
+                    ? CachedNetworkImage(
+                        imageUrl: snapshot.data,
+                        placeholder: (context, url) => Icon(
+                          Icons.person,
+                          size: 70,
+                        ),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.error,
+                          size: 70,
+                        ),
+                      )
+                    : SpinKitFadingGrid(color: Colors.black26);
+              }),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -46,7 +88,7 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
     if (FacultyController.faculties == null ||
         FacultyController.faculties.isEmpty) _con.getFacultyList();
 
-    items.addAll(FacultyController.faculties);
+    items.addAll(FacultyController.faculties ?? []);
   }
 
   //Logic to search custom objects
@@ -170,7 +212,11 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                             child: _controller.text == ''
                                 ? Container(
                                     color: Colors.red,
-                                    child: FacultyController.faculties == null
+                                    child: FacultyController.faculties ==
+                                                null ||
+                                            FacultyController
+                                                    .faculties.length ==
+                                                0
                                         ? Center(
                                             child: CircularProgressIndicator(),
                                           )
@@ -180,30 +226,40 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                               itemCount: FacultyController
                                                   .faculties.length,
                                               itemBuilder: (context, index) {
-                                                return Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Text(FacultyController
-                                                          .faculties[index]
-                                                          .name),
-                                                      SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                      IntrinsicHeight(
-                                                        child: Text(
-                                                            FacultyController
-                                                                .faculties[
-                                                                    index]
-                                                                .dept),
-                                                      ),
-                                                    ],
+                                                return InkWell(
+                                                  onTap: () {
+                                                    print('tappp');
+                                                    _showDialog(
+                                                        FacultyController
+                                                            .faculties[index]);
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(FacultyController
+                                                            .faculties[index]
+                                                            .name),
+                                                        SizedBox(
+                                                          width: 20,
+                                                        ),
+                                                        IntrinsicHeight(
+                                                          child: Text(
+                                                              FacultyController
+                                                                  .faculties[
+                                                                      index]
+                                                                  .dept),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 );
                                               },
@@ -219,24 +275,31 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                         : ListView.builder(
                                             itemCount: items.length,
                                             itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Text(items[index].name),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    IntrinsicHeight(
-                                                      child: Text(
-                                                          items[index].dept),
-                                                    ),
-                                                  ],
+                                              return InkWell(
+                                                onTap: () {
+                                                  print('tap');
+                                                  _showDialog(items[index]);
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: <Widget>[
+                                                      Text(items[index].name),
+                                                      SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                      IntrinsicHeight(
+                                                        child: Text(
+                                                            items[index].dept),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               );
                                             },

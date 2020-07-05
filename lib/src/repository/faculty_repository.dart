@@ -42,14 +42,14 @@ Future<List<Faculty>> getFaculty() async {
   }
 }
 
-Future<String> getFacultyImage() async {
+Future<String> getFacultyImage(String link1) async {
   String id = User().getId();
   String password = User().getPassword();
   String link;
   try {
     Response response = await Dio().post(
         'https://sarthak-mums-iiit.herokuapp.com/facimg',
-        data: {"uid": id, "pwd": password, "link": "facDet.php?facid=1056"});
+        data: {"uid": id, "pwd": password, "link": link1});
 
     link = response.data['link'];
     print('fetched link');

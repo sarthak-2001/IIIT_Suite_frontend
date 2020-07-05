@@ -38,12 +38,12 @@ class _TestingState extends State<Testing> {
               },
               child: Text('fac'),
             ),
-            RaisedButton(
-              onPressed: () async {
-                await getFacultyImage();
-              },
-              child: Text('fac Image'),
-            ),
+//            RaisedButton(
+//              onPressed: () async {
+//                await getFacultyImage();
+//              },
+//              child: Text('fac Image'),
+//            ),
             TextFormField(
               controller: _stu,
               validator: (v) {
