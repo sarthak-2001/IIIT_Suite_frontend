@@ -208,7 +208,7 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                                       style: TextStyle(
                                                         fontSize: 15,
                                                         fontWeight: FontWeight.w500,
-                                                        color: Color(0xffcacad6)//kFontColour
+                                                        color: kFontColour
                                                       ),),
                                                     ),
                                                     SizedBox(

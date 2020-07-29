@@ -42,8 +42,15 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape:  RoundedRectangleBorder(
+              borderRadius:
+              BorderRadius.circular(15.0)),
+          backgroundColor: kForegroundColour,
           title: new Text(
             "${student.id}",
+            style: TextStyle(
+                color: Color(0xffEDE7F6)
+            ),
             textAlign: TextAlign.center,
           ),
           content: CachedNetworkImage(

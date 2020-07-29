@@ -11,6 +11,9 @@ import 'package:iiit_suite/src/repository/faculty_repository.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../../constants.dart';
+import '../../constants.dart';
+
 class BounceScroll extends ScrollBehavior {
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) =>
@@ -47,8 +50,16 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape:  RoundedRectangleBorder(
+              borderRadius:
+              BorderRadius.circular(15.0)),
+          backgroundColor: kForegroundColour,
+
           title: new Text(
             "${faculty.name}",
+            style: TextStyle(
+              color: Color(0xffEDE7F6)
+            ),
             textAlign: TextAlign.center,
           ),
           content: FutureBuilder<String>(
@@ -66,11 +77,15 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                           size: 70,
                         ),
                       )
-                    : SpinKitFadingGrid(color: Colors.black26);
+                    : SpinKitFadingGrid(color: Colors.white70);
               }),
+
           actions: <Widget>[
-            new FlatButton(
+            new RaisedButton(
+              elevation: 5.0,
               child: new Text("Close"),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -85,8 +100,7 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
   void initState() {
     super.initState();
     getCreds();
-    if (FacultyController.faculties == null ||
-        FacultyController.faculties.isEmpty) _con.getFacultyList();
+    if (FacultyController.faculties == null || FacultyController.faculties.isEmpty) _con.getFacultyList();
 
     items.addAll(FacultyController.faculties ?? []);
   }
@@ -159,19 +173,19 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                             onTap: () {
                               scaffoldKey.currentState.openEndDrawer();
                             },
-                            child: Container(
+                            /*child: Container(
                               height: 40,
                               width: 40,
                               decoration: new BoxDecoration(
                                 color: kForegroundColour,
                                 shape: BoxShape.circle,
-                              ),
+                              ),*/
                               child: Icon(
                                 Icons.dehaze,
                                 color: kFontColour,
                                 size: 30,
                               ),
-                            ),
+                            //),
                           ),
                         ),
                       ],
@@ -201,7 +215,10 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                       filterSearchResults(value);
                                     },
                                     decoration: InputDecoration(
-                                      suffixIcon: Icon(Icons.search),
+                                      focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.white)
+                                      ),
+                                      suffixIcon: Icon(Icons.search,color: kFontColour,),
                                     ),
                                   ),
                                 ),
@@ -211,27 +228,21 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                           Expanded(
                             child: _controller.text == ''
                                 ? Container(
-                                    color: Colors.red,
-                                    child: FacultyController.faculties ==
-                                                null ||
-                                            FacultyController
-                                                    .faculties.length ==
-                                                0
+                                    color: kForegroundColour,
+                                    child: FacultyController.faculties == null || FacultyController.faculties.length == 0
                                         ? Center(
                                             child: CircularProgressIndicator(),
                                           )
                                         : ScrollConfiguration(
                                             behavior: BounceScroll(),
                                             child: ListView.builder(
-                                              itemCount: FacultyController
-                                                  .faculties.length,
+                                              itemCount: FacultyController.faculties.length,
                                               itemBuilder: (context, index) {
                                                 return InkWell(
                                                   onTap: () {
                                                     print('tappp');
                                                     _showDialog(
-                                                        FacultyController
-                                                            .faculties[index]);
+                                                        FacultyController.faculties[index]);
                                                   },
                                                   child: Padding(
                                                     padding:
@@ -239,15 +250,16 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                                             8.0),
                                                     child: Column(
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
+                                                          MainAxisAlignment.start,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                          CrossAxisAlignment.start,
                                                       children: <Widget>[
-                                                        Text(FacultyController
-                                                            .faculties[index]
-                                                            .name),
+                                                        Text(FacultyController.faculties[index].name,
+                                                          style: TextStyle(
+                                                            fontWeight: FontWeight.w700,
+                                                            color: Color(0xffEDE7F6),
+                                                            fontSize:15
+                                                          ),),
                                                         SizedBox(
                                                           width: 20,
                                                         ),
@@ -256,7 +268,13 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                                               FacultyController
                                                                   .faculties[
                                                                       index]
-                                                                  .dept),
+                                                                  .dept,
+                                                              style: TextStyle(
+                                                              fontWeight: FontWeight.w200,
+                                                              color: Color(0xffE1BEE7),
+                                                              fontSize:12
+                                                          ),
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
@@ -270,7 +288,11 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                     color: Colors.white70,
                                     child: items.isEmpty
                                         ? Center(
-                                            child: Text('No result'),
+                                            child: Text(" 'No result' ",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700
+                                            ),),
                                           )
                                         : ListView.builder(
                                             itemCount: items.length,
@@ -284,19 +306,27 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: <Widget>[
-                                                      Text(items[index].name),
+                                                      Text(
+                                                        items[index].name,
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w700,
+                                                            fontSize:15
+                                                        ),
+                                                      ),
                                                       SizedBox(
                                                         width: 20,
                                                       ),
                                                       IntrinsicHeight(
                                                         child: Text(
-                                                            items[index].dept),
+                                                            items[index].dept,
+                                                            style: TextStyle(
+                                                            fontWeight: FontWeight.w200,
+                                                            fontSize:12
+                                                          ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
