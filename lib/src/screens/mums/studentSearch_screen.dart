@@ -47,7 +47,7 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
               BorderRadius.circular(15.0)),
           backgroundColor: kForegroundColour,
           title: new Text(
-            "${student.id}",
+            "${student.name}",
             style: TextStyle(
                 color: Color(0xffEDE7F6)
             ),
@@ -66,8 +66,11 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
           ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
+            new RaisedButton(
+              elevation: 5.0,
               child: new Text("Close"),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -122,19 +125,19 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                             onTap: () {
                               scaffoldKey.currentState.openEndDrawer();
                             },
-                            child: Container(
+                            /*child: Container(
                               height: 40,
                               width: 40,
                               decoration: new BoxDecoration(
                                 color: kForegroundColour,
                                 shape: BoxShape.circle,
-                              ),
+                              ),*/
                               child: Icon(
                                 Icons.dehaze,
                                 color: kFontColour,
                                 size: 30,
                               ),
-                            ),
+                           // ),
                           ),
                         ),
                       ],
@@ -157,6 +160,7 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextField(
+                                      style: TextStyle(color: kFontColour),
                                       textInputAction: TextInputAction.search,
                                       controller: _controller,
                                       enableSuggestions: true,
@@ -174,6 +178,9 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                         });
                                       },
                                       decoration: InputDecoration(
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white)
+                                        ),
                                         suffixIcon: InkWell(
                                           onTap: () async {
                                             SystemChannels.textInput
@@ -191,7 +198,7 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                             });
                                           },
                                           child: loading == false
-                                              ? Icon(Icons.search)
+                                              ? Icon(Icons.search,color: kFontColour,)
                                               : Container(
                                                   child: Padding(
                                                   padding:
@@ -208,10 +215,16 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                             ),
                             Expanded(
                               child: Container(
-                                color: Colors.red,
+                                color: kForegroundColour,
                                 child: students.length == 0
                                     ? Center(
-                                        child: Text('Search by name and id'),
+                                        child: Text(" 'Search by Name and Id' ",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18,
+                                            color: kFontColour
+                                          ),
+                                        ),
                                       )
                                     : ScrollConfiguration(
                                         behavior: BounceScroll(),
@@ -228,12 +241,24 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Row(
                                                     children: <Widget>[
-                                                      Text(students[index].id),
+                                                      Text(students[index].id,
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w400,
+                                                            color: Color(0xffE1BEE7),
+                                                            fontSize:15
+                                                        ),
+                                                      ),
                                                       SizedBox(
                                                         width: 20,
                                                       ),
                                                       Text(
-                                                          students[index].name),
+                                                          students[index].name,
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w700,
+                                                            color: Color(0xffEDE7F6),
+                                                            fontSize:15
+                                                        ),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),

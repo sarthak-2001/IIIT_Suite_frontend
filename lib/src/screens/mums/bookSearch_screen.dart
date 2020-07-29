@@ -138,9 +138,6 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                         });
                                       },
                                       decoration: InputDecoration(
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.white30)
-                                        ),
                                         focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(color: Colors.white)
                                         ),
@@ -179,7 +176,7 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                 color: kForegroundColour,
                                 child: books.length == 0
                                     ? Center(
-                                        child: Text(' Search by Name and Id ',style: TextStyle(color: kFontColour,fontSize: 18),),
+                                        child: Text(" 'Search by Name' ",style: TextStyle(color: kFontColour,fontSize: 18),),
                                       )
                                     : ScrollConfiguration(
                                         behavior: BounceScroll(),

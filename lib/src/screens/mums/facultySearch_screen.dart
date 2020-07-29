@@ -290,8 +290,8 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                         ? Center(
                                             child: Text(" 'No result' ",
                                             style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w700
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500
                                             ),),
                                           )
                                         : ListView.builder(
