@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: BoxDecoration(
                 color: kFontColour,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(5),
+                  Radius.circular(10),
                 ),
               ),
               child: Form(

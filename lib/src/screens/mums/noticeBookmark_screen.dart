@@ -18,10 +18,14 @@ class NoticeBookmarkScreen extends StatefulWidget {
 }
 
 class _NoticeBookmarkScreenState extends State<NoticeBookmarkScreen> {
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: kBackgroundColour,
         endDrawerEnableOpenDragGesture: true,
         endDrawer: MumsDrawerWidget(),
@@ -46,6 +50,31 @@ class _NoticeBookmarkScreenState extends State<NoticeBookmarkScreen> {
                               fontWeight: FontWeight.w500),
                         ),
                       ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InkWell(
+                            onTap: () {
+                              scaffoldKey.currentState.openEndDrawer();
+                            },
+                            /*child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: new BoxDecoration(
+                                color: kForegroundColour,
+                                shape: BoxShape.circle,
+                              ),*/
+                            child: Icon(
+                              Icons.dehaze,
+                              color: kFontColour,
+                              size: 30,
+                            ),
+                            // ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
