@@ -131,19 +131,19 @@ class noticeSearchWidget extends StatelessWidget {
                 ),
               ));
         },
-        child: Container(
+        /*child: Container(
           height: 40,
           width: 40,
           decoration: new BoxDecoration(
             color: kForegroundColour,
             shape: BoxShape.circle,
-          ),
+          ),*/
           child: Icon(
             Icons.search,
             color: kFontColour,
             size: 30,
           ),
-        ),
+        //),
       ),
     );
   }

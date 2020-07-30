@@ -122,7 +122,7 @@ class _NoticeDetailState extends State<NoticeDetail> {
                     child: Container(
                       color: Color(0xff0F0C12),
                       child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.only(left: 18.0,right: 18.0,top: 35,bottom: 18),
                         child: SelectableText(
                           '${widget.notice.content}',
                           style: TextStyle(fontSize: 14, color: kFontColour),
@@ -227,6 +227,9 @@ class _NoticeDetailState extends State<NoticeDetail> {
                               setState(() {
                                 isBookmarked = false;
                               });
+                              Fluttertoast.showToast(
+                                  msg: 'Bookmark Removed',
+                                  toastLength: Toast.LENGTH_SHORT);
                             }
                           },
                           child: Container(

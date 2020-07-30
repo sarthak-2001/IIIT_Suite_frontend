@@ -97,19 +97,19 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                               onTap: () {
                                 scaffoldKey.currentState.openEndDrawer();
                               },
-                              child: Container(
+                              /*child: Container(
                                 height: 40,
                                 width: 40,
                                 decoration: new BoxDecoration(
                                   color: kForegroundColour,
                                   shape: BoxShape.circle,
-                                ),
+                                ),*/
                                 child: Icon(
                                   Icons.dehaze,
                                   color: kFontColour,
                                   size: 30,
                                 ),
-                              ),
+                              //),
                             ),
                           ),
                         ],
