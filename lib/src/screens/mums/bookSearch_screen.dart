@@ -86,12 +86,12 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                 color: kForegroundColour,
                                 shape: BoxShape.circle,
                               ),*/
-                              child: Icon(
-                                Icons.dehaze,
-                                color: kFontColour,
-                                size: 30,
-                              ),
-                           // ),
+                            child: Icon(
+                              Icons.dehaze,
+                              color: kFontColour,
+                              size: 30,
+                            ),
+                            // ),
                           ),
                         ),
                       ],
