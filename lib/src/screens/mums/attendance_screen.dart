@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/attendance_controller.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/attendance_percentage.dart';
 import 'package:iiit_suite/src/widgets/mums/attendancelist_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';

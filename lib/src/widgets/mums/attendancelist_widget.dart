@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/controllers/attendance_controller.dart';
 import 'package:iiit_suite/src/models/attendance.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../constants.dart';
-import '../attendance_percentage.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -16,22 +16,8 @@ class AttendanceListWidget extends StatefulWidget {
   _AttendanceListWidgetState createState() => _AttendanceListWidgetState();
 }
 
-class _AttendanceListWidgetState extends State<AttendanceListWidget>
-    with SingleTickerProviderStateMixin {
-  AnimationController progressController;
-  Animation<double> animation;
+class _AttendanceListWidgetState extends State<AttendanceListWidget> {
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    progressController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
-    animation = Tween<double>(begin: 0, end: 80).animate(progressController)
-      ..addListener(() {
-        setState(() {});
-      });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +31,18 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget>
               itemCount: AttendanceController.attendance.length,
               itemBuilder: (context, index) {
                 List<Attendance> attendances = AttendanceController.attendance;
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    color: kForegroundColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                return Column(
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        padding: EdgeInsets.all(8.0),
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        color: kForegroundColour,
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Row(
                               children: <Widget>[
@@ -75,7 +60,7 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget>
                                 Text(
                                   '${attendances[index].subject}',
                                   style: TextStyle(
-                                    fontSize: 18.0,
+                                    fontSize: 15.0,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -83,81 +68,87 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget>
                               ],
                             ),
                             Row(
-                              children: <Widget>[
-                                Text(
-                                  'Attendance :',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.white70,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Text(
+                                          'Attendance : ',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${attendances[index].days_present}/',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${attendances[index].total_days}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Text(
+                                          'Last Updated : ',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${attendances[index].last_updated}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
-                                Text(
-                                  '${attendances[index].days_present}',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
+                                CircularPercentIndicator(
+                                  radius: 74.0,
+                                  lineWidth: 10.0,
+                                  animation: true,
+                                  percent: (attendances[index].days_present/attendances[index].total_days),
+                                  center: new Text(
+                                    '${(attendances[index].days_present/attendances[index].total_days)*100}%',
+                                    style:
+                                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 14,
+                                      color: Colors.white,),
                                   ),
-                                ),
-                                Text(
-                                  '${attendances[index].total_days}',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.greenAccent,
+                                  backgroundColor: Colors.black45,
                                 )
                               ],
                             ),
-                            Row(
-                              children: <Widget>[
-                                Text(
-                                  'Last Updated :',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.white70,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Text(
-                                  '${attendances[index].last_updated}',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            )
                           ],
                         ),
-                        CustomPaint(
-                          foregroundPainter: CircleProgress(animation.value),
-                          child: Container(
-                            width: 190,
-                            height: MediaQuery.of(context).size.height,
-                            child: GestureDetector(
-                                onTap: () {
-                                  if (animation.value == 80) {
-                                    progressController.reverse();
-                                  } else {
-                                    progressController.forward();
-                                  }
-                                },
-                                child: Center(
-                                    child: Text(
-                                  "${animation.value.toInt()} %",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ))),
-                          ),
-                        )
-                      ],
+
+                      ),
+
                     ),
-                  ),
+                    SizedBox(height: 20,)
+                  ],
                 );
               },
             ),
