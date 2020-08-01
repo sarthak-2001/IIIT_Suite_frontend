@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/controllers/attendance_controller.dart';
 import 'package:iiit_suite/src/models/attendance.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -25,7 +26,7 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget> {
       behavior: BounceScroll(),
       child: AttendanceController.attendance == null
           ? Center(
-              child: CircularProgressIndicator(),
+              child: SpinKitFadingGrid(color: Colors.white70),
             )
           : ListView.builder(
               itemCount: AttendanceController.attendance.length,
