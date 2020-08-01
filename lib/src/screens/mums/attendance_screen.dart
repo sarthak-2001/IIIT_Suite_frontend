@@ -8,38 +8,37 @@ import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class AttendanceScreen extends StatefulWidget {
-  AttendanceScreen({Key key}) :super(key:key);
+  AttendanceScreen({Key key}) : super(key: key);
 
   @override
   _AttendanceScreenState createState() => _AttendanceScreenState();
 }
 
-class _AttendanceScreenState extends StateMVC<AttendanceScreen>{
+class _AttendanceScreenState extends StateMVC<AttendanceScreen> {
   String id = '';
   String password = '';
   bool loading = false;
   AttendanceController _con;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-
   void getCreds() {
     id = User().getId();
     password = User().getPassword();
   }
 
-  _AttendanceScreenState() : super(AttendanceController()){
+  _AttendanceScreenState() : super(AttendanceController()) {
     _con = controller;
   }
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getCreds();
-    if(AttendanceController.attendance == null || AttendanceController.attendance.isEmpty){
+    if (AttendanceController.attendance == null ||
+        AttendanceController.attendance.isEmpty) {
       _con.getAttendanceList();
       print('Attendance reload initiated');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +96,11 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen>{
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0),
-                child: AttendanceListWidget(),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 18.0),
+                  child: AttendanceListWidget(),
+                ),
               )
             ],
           ),
@@ -108,5 +109,3 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen>{
     );
   }
 }
-
-
