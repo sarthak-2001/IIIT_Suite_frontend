@@ -18,8 +18,6 @@ class AttendanceListWidget extends StatefulWidget {
 }
 
 class _AttendanceListWidgetState extends State<AttendanceListWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
@@ -129,12 +127,15 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget> {
                                   radius: 74.0,
                                   lineWidth: 10.0,
                                   animation: true,
-                                  percent: (attendances[index].days_present/attendances[index].total_days),
+                                  percent: (attendances[index].days_present /
+                                      attendances[index].total_days),
                                   center: new Text(
-                                    '${(attendances[index].days_present/attendances[index].total_days)*100}%',
-                                    style:
-                                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 14,
-                                      color: Colors.white,),
+                                    '${((attendances[index].days_present / attendances[index].total_days) * 100).toStringAsPrecision(3)}%',
+                                    style: new TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   circularStrokeCap: CircularStrokeCap.round,
                                   progressColor: Colors.greenAccent,
@@ -144,11 +145,11 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget> {
                             ),
                           ],
                         ),
-
                       ),
-
                     ),
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 );
               },
