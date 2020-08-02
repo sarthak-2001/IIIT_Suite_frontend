@@ -83,17 +83,14 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 40),
-            child: Text(
-              'IIIT SUITE',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+          Positioned(
+            top: 1,
+            bottom: 1,
+            child: Container(
+//              margin: EdgeInsets.only(top: 40),
+              child: Image.asset(
+                'assets/logo.png',
               ),
-              textAlign: TextAlign.center,
-              textWidthBasis: TextWidthBasis.longestLine,
             ),
           ),
           Center(

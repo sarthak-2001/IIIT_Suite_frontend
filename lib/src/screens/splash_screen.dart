@@ -49,17 +49,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return PlayAnimation<double>(
-      tween: 0.0.tweenTo(60.0),
-      duration: 2.seconds,
-      curve: Curves.easeOut,
+      tween: 1.0.tweenTo(400.0),
+      duration: 4.seconds,
+      curve: Curves.linear,
       builder: (context, child, value) {
         return SafeArea(
           child: Center(
-            child: Text(
-              'IIIT Suite',
-              style: TextStyle(fontSize: value, color: Colors.white24),
-            ),
-          ),
+              child: Image.asset(
+            'assets/logo.png',
+            height: value,
+            width: value,
+          )),
         );
       },
     );
