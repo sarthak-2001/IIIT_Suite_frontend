@@ -123,23 +123,25 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget> {
                                     )
                                   ],
                                 ),
-                                CircularPercentIndicator(
-                                  radius: 74.0,
-                                  lineWidth: 10.0,
-                                  animation: true,
-                                  percent: (attendances[index].days_present /
-                                      attendances[index].total_days),
-                                  center: new Text(
-                                    '${((attendances[index].days_present / attendances[index].total_days) * 100).toStringAsPrecision(3)}%',
-                                    style: new TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                      color: Colors.white,
+                                IntrinsicHeight(
+                                  child: CircularPercentIndicator(
+                                    radius: 80.0,
+                                    lineWidth: 10.0,
+                                    animation: true,
+                                    percent: (attendances[index].days_present /
+                                        attendances[index].total_days),
+                                    center: new Text(
+                                      '${((attendances[index].days_present / attendances[index].total_days) * 100).toStringAsPrecision(3)}%',
+                                      style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    progressColor: Colors.greenAccent,
+                                    backgroundColor: Colors.black45,
                                   ),
-                                  circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: Colors.greenAccent,
-                                  backgroundColor: Colors.black45,
                                 )
                               ],
                             ),
