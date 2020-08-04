@@ -3,6 +3,7 @@ import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/attendance_controller.dart';
 import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/widgets/mums/attendancelist_widget.dart';
+import 'package:iiit_suite/src/widgets/mums/cachedAttendancelist_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -47,61 +48,65 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen> {
         backgroundColor: kBackgroundColour,
         endDrawerEnableOpenDragGesture: true,
         endDrawer: MumsDrawerWidget(),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-          child: Column(
-            children: <Widget>[
-              IntrinsicHeight(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 9,
-                      child: RichText(
-                        text: TextSpan(
-                          text: "Attendance",
-                          style: TextStyle(
-                              color: kFontColour,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 26,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              scaffoldKey.currentState.openEndDrawer();
-                            },
-                            /*child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: new BoxDecoration(
-                                  color: kForegroundColour,
-                                  shape: BoxShape.circle,
-                                ),*/
-                            child: Icon(
-                              Icons.dehaze,
-                              color: kFontColour,
-                              size: 30,
-                            ),
-                            // ),
+        body: RefreshIndicator(
+          onRefresh: _con.refreshAttendance,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Column(
+              children: <Widget>[
+                IntrinsicHeight(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 9,
+                        child: RichText(
+                          text: TextSpan(
+                            text: "Attendance",
+                            style: TextStyle(
+                                color: kFontColour,
+                                fontStyle: FontStyle.normal,
+                                fontSize: 26,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: () {
+                                scaffoldKey.currentState.openEndDrawer();
+                              },
+                              /*child: Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: new BoxDecoration(
+                                    color: kForegroundColour,
+                                    shape: BoxShape.circle,
+                                  ),*/
+                              child: Icon(
+                                Icons.dehaze,
+                                color: kFontColour,
+                                size: 30,
+                              ),
+                              // ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: AttendanceListWidget(),
-                ),
-              )
-            ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: (AttendanceController.attendance == null)
+                    ?CachedAttendanceListWidget() : AttendanceListWidget(),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -125,7 +125,7 @@ class _AttendanceListWidgetState extends State<AttendanceListWidget> {
                                 ),
                                 IntrinsicHeight(
                                   child: CircularPercentIndicator(
-                                    radius: 80.0,
+                                    radius: 74.0,
                                     lineWidth: 10.0,
                                     animation: true,
                                     percent: (attendances[index].days_present /
