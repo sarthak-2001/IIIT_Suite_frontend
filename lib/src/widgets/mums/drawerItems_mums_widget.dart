@@ -7,6 +7,7 @@ import 'package:iiit_suite/src/screens/mums/gradeMain_screen.dart';
 import 'package:iiit_suite/src/screens/mums/intranetResources_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticeBookmark_screen.dart';
 import 'package:iiit_suite/src/screens/mums/noticesList_screen.dart';
+import 'package:iiit_suite/src/screens/mums/privacyPolicy_screen.dart';
 import 'package:iiit_suite/src/screens/mums/semesterDetails_screen.dart';
 import 'package:iiit_suite/src/screens/mums/studentSearch_screen.dart';
 import 'package:iiit_suite/src/widgets/drawerEntries_widget.dart';
@@ -65,6 +66,10 @@ class DrawerItemsMums extends StatelessWidget {
             thickness: 1.5,
           ),
           DrawerEntries(title: 'About Developer'),
+          DrawerEntries(
+              title: 'Privacy Policy',
+              route:PrivacyPolicyScreeen(),
+          ),
           DrawerEntries(title: 'Report Bug'),
           DrawerLogOutEntry(),
           SizedBox(

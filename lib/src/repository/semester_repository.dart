@@ -13,10 +13,10 @@ Future<List<Semester>> getSemester() async{
       'https://sarthak-mums-iiit.herokuapp.com/sem',
         data: {"uid": id, "pwd": password}
     );
-    for(var s in response.data['sems']){
+    for(int i = 0;i<= response.data['sems'];i++){
       semesters.add(Semester(
-        cgpa: s['cgpa'],
-        sgpa: s['sgpa'],
+        //cgpa: i['cgpa'].toString(),
+        //sgpa: ,
       ));
     }
     print('fetched Semester');
