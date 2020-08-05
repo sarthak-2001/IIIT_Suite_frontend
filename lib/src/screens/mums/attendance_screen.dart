@@ -78,13 +78,7 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen> {
                               onTap: () {
                                 scaffoldKey.currentState.openEndDrawer();
                               },
-                              /*child: Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: new BoxDecoration(
-                                    color: kForegroundColour,
-                                    shape: BoxShape.circle,
-                                  ),*/
+
                               child: Icon(
                                 Icons.dehaze,
                                 color: kFontColour,
@@ -102,7 +96,8 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 18.0),
                     child: (AttendanceController.attendance == null)
-                    ?CachedAttendanceListWidget() : AttendanceListWidget(),
+                        ? CachedAttendanceListWidget()
+                        : AttendanceListWidget(),
                   ),
                 )
               ],
