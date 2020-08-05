@@ -53,6 +53,8 @@ dependencies:
   simple_animations: ^2.2.1
   cached_network_image: ^2.2.0+1
   flutter_spinkit: ^4.1.2+1
+  simple_gesture_detector: ^0.1.4
+
   percent_indicator: "^2.1.5"
 
 
