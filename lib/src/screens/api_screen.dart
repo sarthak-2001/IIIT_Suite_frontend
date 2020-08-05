@@ -3,6 +3,7 @@ import 'package:iiit_suite/src/repository/attendance_repository.dart';
 import 'package:iiit_suite/src/repository/book_repository.dart';
 import 'package:iiit_suite/src/repository/faculty_repository.dart';
 import 'package:iiit_suite/src/repository/grade_repository.dart';
+import 'package:iiit_suite/src/repository/semester_repository.dart';
 import 'package:iiit_suite/src/repository/student_repository.dart';
 
 class Testing extends StatefulWidget {
@@ -25,6 +26,12 @@ class _TestingState extends State<Testing> {
                 await getAttendance();
               },
               child: Text('Attenance'),
+            ),
+            RaisedButton(
+              onPressed: () async {
+                await getSemester();
+              },
+              child: Text('Sems'),
             ),
             RaisedButton(
               onPressed: () async {
