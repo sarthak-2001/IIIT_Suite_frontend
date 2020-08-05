@@ -31,7 +31,7 @@ Future<List<Grade>> getGrade() async {
     //
     print('fetched grades');
     for (Grade a in grades) {
-      print(a.subject);
+      print(a.semester);
     }
     return grades;
   } catch (e) {
