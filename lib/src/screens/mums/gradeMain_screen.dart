@@ -77,9 +77,38 @@ class _GradeScreenState extends State<GradeScreen> {
                   ],
                 ),
               ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      ' CGPA : ',
+                      style: TextStyle(
+                          color: kFontColour,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Text(
+                      ' 8.0 ',
+                      style: TextStyle(
+                          color: Colors.greenAccent,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.74,
+                child: Divider(
+                  color: Color(0xffd8caeb),
+                  thickness: 1.0,
+                ),
+              ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Column(
                     children: <Widget>[
                       InkWell(

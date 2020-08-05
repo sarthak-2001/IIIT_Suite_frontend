@@ -128,6 +128,51 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        'Credits : ',
+                                        style: TextStyle(
+                                          fontSize: 12.0,
+                                          color: Colors.white70,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                      Text(
+                                        '0.0',
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        'Teacher Assesment : ',
+                                        style: TextStyle(
+                                          fontSize: 12.0,
+                                          color: Colors.white70,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                      Text(
+                                        '0.0',
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
@@ -217,32 +262,12 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Teacher Assesment : ',
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.white70,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  Text(
-                                    '0.0',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        'Credits : ',
+                                        'Grade Points : ',
                                         style: TextStyle(
                                           fontSize: 12.0,
                                           color: Colors.white70,
@@ -252,8 +277,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                       Text(
                                         '0.0',
                                         style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
+                                          fontSize: 16.0,
+                                          color: Colors.greenAccent,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -270,10 +295,10 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                         ),
                                       ),
                                       Text(
-                                        '0.0',
+                                        'O',
                                         style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
+                                          fontSize: 16.0,
+                                          color: Colors.greenAccent,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -285,6 +310,9 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      )
                     ],
                   ),
                 ),
