@@ -7,6 +7,7 @@ import 'package:iiit_suite/src/repository/user_repository.dart';
 import 'package:iiit_suite/src/screens/homePages_screen.dart';
 import 'package:route_transitions/route_transitions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -73,6 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  SwipeCallback _onVerticalSwipe(SwipeDirection direction) {
+    if (direction == SwipeDirection.up) _showModalSheet();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -81,25 +86,24 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: kBackgroundColour,
       resizeToAvoidBottomInset: false,
-      body: Stack(
+      body: Column(
         children: <Widget>[
-          Positioned(
-            top: 1,
-            bottom: 1,
-            child: Container(
+          Container(
 //              margin: EdgeInsets.only(top: 40),
-              child: Image.asset(
-                'assets/logo.png',
-              ),
+            child: Image.asset(
+              'assets/logo.png',
+              height: 300,
+              width: 300,
             ),
           ),
           Center(
             child: Container(
               margin: EdgeInsets.only(
-                  top: height * 0.3,
-                  left: width * 0.12,
-                  right: width * 0.12,
-                  bottom: height * 0.28),
+                top: 10,
+                left: width * 0.12,
+                right: width * 0.12,
+                bottom: 50,
+              ),
               decoration: BoxDecoration(
                 color: kFontColour,
                 borderRadius: BorderRadius.all(
@@ -111,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    SizedBox(height: 5),
                     Text(
                       'Login',
                       style: TextStyle(
@@ -254,21 +259,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                   kForegroundColour),
                             ),
                           ),
+                    SizedBox(height: 5),
                   ],
                 ),
               ),
             ),
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: -1,
+          Spacer(),
+          SimpleGestureDetector(
+            onVerticalSwipe: _onVerticalSwipe,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(15), topLeft: Radius.circular(15)),
               child: InkWell(
                 onTap: _showModalSheet,
                 child: Container(
+                  width: double.infinity,
                   color: kBottomNavColour,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 4, 8, 14),
