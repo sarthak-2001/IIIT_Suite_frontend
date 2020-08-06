@@ -464,6 +464,159 @@ class PrivacyPolicyScreeen extends StatelessWidget {
                                 fontWeight: FontWeight.w400
                             ),
                           ),
+                          SizedBox(height: 10,),
+                          Text(
+                            'Links To Other Sites',
+                            style: TextStyle(
+                                color: Color(0xffE1BEE7),
+                                fontSize:20,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            'Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third partys site'
+                          'We strongly advise you to review the Privacy Policy of every site you visit.',
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          Text(
+                            'We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.',
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text(
+                            "Children's Privacy",
+                            style: TextStyle(
+                                color: Color(0xffE1BEE7),
+                                fontSize:20,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            'Our Service does not address anyone under the age of 18 ("Children").',
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          SizedBox(height: 4,),
+                          Text(
+                            "We do not knowingly collect personally identifiable information from anyone under the age of 18."
+                                " If you are a parent or guardian and you are aware that your Children has provided us with Personal Data,"
+                                " please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent,"
+                                " we take steps to remove that information from our servers.",
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text(
+                            "Changes To This Privacy Policy",
+                            style: TextStyle(
+                                color: Color(0xffE1BEE7),
+                                fontSize:20,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          Text(
+                            'We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and'
+                                ' update the "effective date" at the top of this Privacy Policy.',
+                            style: TextStyle(
+                                color: kSecondaryFontColour,
+                                fontSize:14,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          Text(
+                            'You are advised to review this Privacy Policy periodically for any changes.'
+                                ' Changes to this Privacy Policy are effective when they are posted on this page.',
+                              style: TextStyle(
+                              color: kSecondaryFontColour,
+                              fontSize:14,
+                              fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text(
+                            "Changes To This Privacy Policy",
+                            style: TextStyle(
+                                color: Color(0xffE1BEE7),
+                                fontSize:20,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            'If you have any questions about this Privacy Policy, please contact us:',
+                              style: TextStyle(
+                              color: kSecondaryFontColour,
+                              fontSize:14,
+                              fontWeight: FontWeight.w400
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Row(
+                            children: [
+                              Text(
+                                'By Email: ',
+                                style: TextStyle(
+                                    color: kSecondaryFontColour,
+                                    fontSize:14,
+                                    fontWeight: FontWeight.w400
+                                ),
+                              ),
+                              Text(
+                                ' b318013@iiit-bh.c.in  /',
+                                style: TextStyle(
+                                    color: Color(0xffE1BEE7),
+                                    fontSize:16,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'By Email: ',
+                                style: TextStyle(
+                                    color: kSecondaryFontColour,
+                                    fontSize:14,
+                                    fontWeight: FontWeight.w400
+                                ),
+                              ),
+                              Text(
+                                ' b418045@iiit-bh.c.in',
+                                style: TextStyle(
+                                    color: Color(0xffE1BEE7),
+                                    fontSize:16,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ],
+                          ),
+
                         ],
                       ),
                     ),
