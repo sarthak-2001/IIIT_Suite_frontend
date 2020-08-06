@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/controllers/grades_controller.dart';
 import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../constants.dart';
 
 class SemesterDetailsScreen extends StatefulWidget {
+  final String grade;
+  SemesterDetailsScreen({this.grade});
   @override
   _SemesterDetailsScreenState createState() => _SemesterDetailsScreenState();
 }
 
-class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
+class _SemesterDetailsScreenState extends StateMVC<SemesterDetailsScreen> {
   String id = '';
   String password = '';
   GradeController _con;
@@ -29,7 +32,7 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
         backgroundColor: kBackgroundColour,
         endDrawerEnableOpenDragGesture: true,
         endDrawer: MumsDrawerWidget(),
-        body:Padding(
+        body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
           child: Column(
             children: <Widget>[
@@ -57,13 +60,7 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                             onTap: () {
                               scaffoldKey.currentState.openEndDrawer();
                             },
-                            /*child: Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: new BoxDecoration(
-                                    color: kForegroundColour,
-                                    shape: BoxShape.circle,
-                                  ),*/
+
                             child: Icon(
                               Icons.dehaze,
                               color: kFontColour,
@@ -84,7 +81,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text('Semester',
+                        child: Text(
+                          'Semester',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: kSecondaryFontColour,
@@ -127,7 +125,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: <Widget>[
@@ -172,7 +171,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
@@ -217,7 +217,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[
@@ -262,7 +263,8 @@ class _SemesterDetailsScreenState extends State<SemesterDetailsScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Row(
                                     children: <Widget>[

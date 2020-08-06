@@ -30,9 +30,9 @@ Future<List<Grade>> getGrade() async {
 //    await NoticeDao().deleteDB();
     //
     print('fetched grades');
-    for (Grade a in grades) {
-      print(a.grade);
-    }
+//    for (Grade a in grades) {
+//      print(a.grade);
+//    }
     return grades;
   } catch (e) {
     print(e);
