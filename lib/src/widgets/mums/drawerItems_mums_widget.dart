@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/screens/api_screen.dart';
+import 'package:iiit_suite/src/screens/devlopers_screen.dart';
 import 'package:iiit_suite/src/screens/mums/attendance_screen.dart';
 import 'package:iiit_suite/src/screens/mums/bookSearch_screen.dart';
 import 'package:iiit_suite/src/screens/mums/facultySearch_screen.dart';
@@ -65,7 +66,10 @@ class DrawerItemsMums extends StatelessWidget {
             color: Colors.white24,
             thickness: 1.5,
           ),
-          DrawerEntries(title: 'About Developer'),
+          DrawerEntries(
+              title: 'About Developer',
+              route:DeveloperScreen(),
+          ),
           DrawerEntries(
               title: 'Privacy Policy',
               route:PrivacyPolicyScreeen(),
