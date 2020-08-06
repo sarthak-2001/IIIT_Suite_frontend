@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iiit_suite/src/controllers/grades_controller.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
-import 'package:iiit_suite/src/models/semester.dart';
-import 'package:iiit_suite/src/models/sgpa.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/repository/semester_repository.dart';
 import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/semesterCachedList_widget.dart';
 import 'package:iiit_suite/src/widgets/mums/semesterList_widget.dart';
@@ -82,7 +78,6 @@ class _GradeScreenState extends StateMVC<GradeScreen> {
                               onTap: () {
                                 scaffoldKey.currentState.openEndDrawer();
                               },
-
                               child: Icon(
                                 Icons.dehaze,
                                 color: kFontColour,
