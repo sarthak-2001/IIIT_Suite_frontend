@@ -1,23 +1,17 @@
-class Sgpa{
-  final int sems;
-  final double points;
+class Sgpa {
+  final String sems;
+  final String points;
 
-  Sgpa({
-   this.sems,
-   this.points
-});
+  Sgpa({this.sems, this.points});
 
-  Map<String, dynamic> toMap(){
-    return{
-      'sems':sems,
-      'sgpa':points
-    };
+  Map<String, dynamic> toMap() {
+    return {'sem': sems, 'sgpa': points};
   }
 
-  static Sgpa fromMap(Map<String, dynamic> map){
+  static Sgpa fromMap(Map<String, dynamic> map) {
     return Sgpa(
-      sems: map['sems'],
-      points: map['sgpa'],
+      sems: map['sem'].toString(),
+      points: map['sgpa'].toString(),
     );
   }
 }

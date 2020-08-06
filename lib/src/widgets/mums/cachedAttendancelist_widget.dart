@@ -27,7 +27,9 @@ class _CachedAttendanceListWidgetState
       child: StreamBuilder<List<Attendance>>(
         stream: Stream.fromFuture(AttendanceDao().getAllSortedByID()),
         builder: (context, snapshot) {
-          if (snapshot.data.length == 0 || snapshot.data == null)
+          if (snapshot.data.length == 0 ||
+              snapshot.data == null ||
+              snapshot.data.length == 0)
             return Center(
               child: CircularProgressIndicator(
                 valueColor:
