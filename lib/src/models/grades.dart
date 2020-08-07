@@ -1,6 +1,7 @@
 class Grade {
   String subject, grade;
   int coid;
+  int db_id;
   dynamic semester, credit, quiz_1, quiz_2, midsem, ta, endsem, grade_points;
 
   Grade(
