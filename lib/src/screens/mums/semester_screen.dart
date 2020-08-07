@@ -61,7 +61,7 @@ class _GradeScreenState extends StateMVC<GradeScreen> {
                         flex: 9,
                         child: RichText(
                           text: TextSpan(
-                            text: "Grades",
+                            text: "Semester",
                             style: TextStyle(
                                 color: kFontColour,
                                 fontStyle: FontStyle.normal,

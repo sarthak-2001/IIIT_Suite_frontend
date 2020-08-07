@@ -35,7 +35,7 @@ class _TestingState extends State<Testing> {
             ),
             RaisedButton(
               onPressed: () async {
-                await getGrade();
+                await getGrade("3");
               },
               child: Text('grade'),
             ),

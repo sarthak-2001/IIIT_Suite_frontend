@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/grades.dart';
 import 'package:iiit_suite/src/models/user.dart';
 
-Future<List<Grade>> getGrade() async {
+Future<List<Grade>> getGrade(String sem) async {
   print('grrade trigger');
   String id = User().getId();
   String password = User().getPassword();
