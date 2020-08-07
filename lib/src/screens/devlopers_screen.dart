@@ -150,84 +150,6 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         CircleAvatar(
                                           radius: 55,
-                                          backgroundImage: AssetImage('assets/dj.jpg'),
-                                        ),
-                                        SizedBox(width: 25,),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              'Divyajyoti Dash',
-                                              style: TextStyle(
-                                                  color: Color(0xffE1BEE7),
-                                                  fontSize:20,
-                                                  fontWeight: FontWeight.bold
-                                              ),
-                                            ),
-                                            SizedBox(height: 2,),
-                                            Text(
-                                              'B318013',
-                                              style: TextStyle(
-                                                  color: kSecondaryFontColour,
-                                                  fontSize:14,
-                                                  fontWeight: FontWeight.w600
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                                      children: <Widget>[
-                                        IconButton(
-                                          onPressed: (){
-                                            _launchGithubInBrowser('https://github.com/dj999dash');
-
-                                          },
-                                            icon: FaIcon(FontAwesomeIcons.github,size: 35,color: kFontColour,),
-                                            ),
-                                        IconButton(
-                                          onPressed: (){
-                                            _launchLinkdeinLinkIos('https://www.linkedin.com/in/divyajyoti-dash-0aaa42192');
-
-                                          },
-                                          icon: FaIcon(FontAwesomeIcons.linkedin,size: 35,color: kFontColour),
-                                        ),
-                                        IconButton(
-                                          onPressed: (){
-                                            _launchEmail('b318013@iiit-suite-bh.ac.in');
-                                          },
-                                          icon: FaIcon(FontAwesomeIcons.solidEnvelope,size: 35,color: kFontColour),
-                                        ),
-                                      ],
-                                    ),
-
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 18,),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: IntrinsicHeight(
-                              child: Container(
-
-                                padding: EdgeInsets.all(10),
-                                color: kForegroundColour,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        CircleAvatar(
-                                          radius: 55,
                                           backgroundImage: AssetImage('assets/sarthak.jpg'),
                                         ),
                                         SizedBox(width: 25,),
@@ -279,6 +201,84 @@ class DeveloperScreen extends StatelessWidget {
                                         IconButton(
                                           onPressed: (){
                                             _launchEmail('b418045@iiit-suite-bh.ac.in');
+                                          },
+                                          icon: FaIcon(FontAwesomeIcons.solidEnvelope,size: 35,color: kFontColour),
+                                        ),
+                                      ],
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 18,),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: IntrinsicHeight(
+                              child: Container(
+
+                                padding: EdgeInsets.all(10),
+                                color: kForegroundColour,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        CircleAvatar(
+                                          radius: 55,
+                                          backgroundImage: AssetImage('assets/dj.jpg'),
+                                        ),
+                                        SizedBox(width: 25,),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Divyajyoti Dash',
+                                              style: TextStyle(
+                                                  color: Color(0xffE1BEE7),
+                                                  fontSize:20,
+                                                  fontWeight: FontWeight.bold
+                                              ),
+                                            ),
+                                            SizedBox(height: 2,),
+                                            Text(
+                                              'B318013',
+                                              style: TextStyle(
+                                                  color: kSecondaryFontColour,
+                                                  fontSize:14,
+                                                  fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                      children: <Widget>[
+                                        IconButton(
+                                          onPressed: (){
+                                            _launchGithubInBrowser('https://github.com/dj999dash');
+
+                                          },
+                                          icon: FaIcon(FontAwesomeIcons.github,size: 35,color: kFontColour,),
+                                        ),
+                                        IconButton(
+                                          onPressed: (){
+                                            _launchLinkdeinLinkIos('https://www.linkedin.com/in/divyajyoti-dash-0aaa42192');
+
+                                          },
+                                          icon: FaIcon(FontAwesomeIcons.linkedin,size: 35,color: kFontColour),
+                                        ),
+                                        IconButton(
+                                          onPressed: (){
+                                            _launchEmail('b318013@iiit-suite-bh.ac.in');
                                           },
                                           icon: FaIcon(FontAwesomeIcons.solidEnvelope,size: 35,color: kFontColour),
                                         ),

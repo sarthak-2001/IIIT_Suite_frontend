@@ -1,10 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
 import 'package:iiit_suite/src/helpers.dart';
 import 'package:iiit_suite/src/models/sgpa.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
+//import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:iiit_suite/src/screens/mums/semesterDetails_screen.dart';
+import 'package:iiit_suite/src/modifiedSparkline.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -51,6 +53,7 @@ class SemListWidget extends StatelessWidget {
                 thickness: 1.0,
               ),
             ),
+            SizedBox(height: 10,),
             Expanded(
               child: Column(
                 children: [
@@ -59,11 +62,15 @@ class SemListWidget extends StatelessWidget {
 //                  width: MediaQuery.of(context).size.width,
                     child: Sparkline(
                       data: getPoints(SemesterController.semester.sgpa),
-                      lineGradient: new LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.purple[800], Colors.purple[200]],
-                      ),
+                        pointSize: 10.0,
+                        pointsMode: PointsMode.last,
+                        pointColor: Colors.purple[200],
+                        lineWidth: 4,
+                        lineGradient: new LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.purple[800], Colors.purple[200]],
+                        ),
                     ),
                   ),
                   Expanded(
