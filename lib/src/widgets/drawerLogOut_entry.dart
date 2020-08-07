@@ -4,7 +4,9 @@ import 'package:iiit_suite/src/repository/user_repository.dart';
 import 'package:iiit_suite/src/screens/login_screen.dart';
 
 class DrawerLogOutEntry extends StatelessWidget {
-  const DrawerLogOutEntry({Key key,}) : super(key: key);
+  const DrawerLogOutEntry({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,12 @@ class DrawerLogOutEntry extends StatelessWidget {
         Navigator.pop(context);
 
         await logout();
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+          (Route<dynamic> route) => false,
+        );
       },
       child: Container(
         width: double.infinity,
