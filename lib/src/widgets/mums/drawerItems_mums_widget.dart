@@ -13,6 +13,7 @@ import 'package:iiit_suite/src/screens/mums/semesterDetails_screen.dart';
 import 'package:iiit_suite/src/screens/mums/studentSearch_screen.dart';
 import 'package:iiit_suite/src/widgets/drawerEntries_widget.dart';
 import 'package:iiit_suite/src/widgets/drawerLogOut_entry.dart';
+import 'package:iiit_suite/src/widgets/drawerReportBug_entry.dart';
 
 class DrawerItemsMums extends StatelessWidget {
   @override
@@ -74,7 +75,7 @@ class DrawerItemsMums extends StatelessWidget {
             title: 'Privacy Policy',
             route: PrivacyPolicyScreeen(),
           ),
-          DrawerEntries(title: 'Report Bug'),
+          DrawerReportBugEntry(),
           DrawerLogOutEntry(),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.009,

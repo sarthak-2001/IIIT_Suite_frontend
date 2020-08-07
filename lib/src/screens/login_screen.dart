@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
 //              margin: EdgeInsets.only(top: 40),
             child: Image.asset(
-              'assets/logo.png',
+              'assets/logo(1).png',
               height: 300,
               width: 300,
             ),
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 bottom: 50,
               ),
               decoration: BoxDecoration(
-                color: kFontColour,
+                color: kSecondaryFontColour,
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
@@ -140,6 +140,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           contentPadding: EdgeInsets.symmetric(horizontal: 5),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5)),
+
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color(0xffc785d2), width: 4.0),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(5.0)),
+                          ),
+
                           suffixIcon: Icon(
                             Icons.email,
                             size: 20,
@@ -168,9 +176,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
-                              Radius.circular(5),
-                            ),
-                          ),
+                              Radius.circular(5)),),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xffc785d2), width: 4.0),
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(5.0)),),
                           contentPadding:
                               EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                           suffixIcon: InkWell(
@@ -206,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     working == false
                         ? Container(
                             child: RaisedButton(
-                              color: kForegroundColour,
+                              color: kBottomNavColour,
                               onPressed: () async {
                                 if (!_key.currentState.validate()) return;
 

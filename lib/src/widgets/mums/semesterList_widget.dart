@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
 import 'package:iiit_suite/src/models/sgpa.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -10,9 +11,7 @@ class BounceScroll extends ScrollBehavior {
 }
 
 class SemListWidget extends StatelessWidget {
-  const SemListWidget({
-    Key key,
-  }) : super(key: key);
+  const SemListWidget({Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +58,14 @@ class SemListWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Column(
                         children: <Widget>[
+                          Sparkline(
+                            //data: arr.first(sgpa[index].points),
+                            lineGradient: new LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.purple[800], Colors.purple[200]],
+                            ),
+                          ),
                           InkWell(
                             onTap: () {},
                             child: ClipRRect(

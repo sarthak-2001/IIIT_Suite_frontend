@@ -16,7 +16,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<bool> _mockCheckForSession() async {
-    await Future.delayed(Duration(milliseconds: 2300), () {});
+    await Future.delayed(Duration(milliseconds: 3900), () {});
     return true;
   }
 
@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
         return SafeArea(
           child: Center(
               child: Image.asset(
-            'assets/logo.png',
+            'assets/logo(1).png',
             height: value,
             width: value,
           )),

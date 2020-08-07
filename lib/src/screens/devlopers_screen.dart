@@ -150,7 +150,7 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         CircleAvatar(
                                           radius: 55,
-                                          backgroundImage: AssetImage('assets/logo.png'),
+                                          backgroundImage: AssetImage('assets/dj.jpg'),
                                         ),
                                         SizedBox(width: 25,),
                                         Column(
@@ -320,7 +320,7 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         CircleAvatar(
                                           radius: 55,
-                                          backgroundImage: AssetImage('assets/logo.png'),
+                                          backgroundImage: AssetImage('assets/barbie.jpg'),
                                         ),
                                         SizedBox(width: 25,),
                                         Column(
@@ -356,7 +356,7 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         IconButton(
                                           onPressed: (){
-                                            _launchLinkdeinLinkIos('');
+                                            _launchLinkdeinLinkIos('https://www.linkedin.com/in/barbie-shah-59360b1b4');
 
                                           },
                                           icon: FaIcon(FontAwesomeIcons.linkedin,size: 35,color: kFontColour),
@@ -391,7 +391,7 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         CircleAvatar(
                                           radius: 55,
-                                          backgroundImage: AssetImage('assets/logo.png'),
+                                          backgroundImage: AssetImage('assets/pranshu.jpg'),
                                         ),
                                         SizedBox(width: 25,),
                                         Column(
@@ -427,14 +427,14 @@ class DeveloperScreen extends StatelessWidget {
                                       children: <Widget>[
                                         IconButton(
                                           onPressed: (){
-                                            _launchGithubInBrowser('');
+                                            _launchGithubInBrowser('https://github.com/pranshu2610');
 
                                           },
                                           icon: FaIcon(FontAwesomeIcons.github,size: 35,color: kFontColour,),
                                         ),
                                         IconButton(
                                           onPressed: (){
-                                            _launchLinkdeinLinkIos('');
+                                            _launchLinkdeinLinkIos('https://www.linkedin.com/in/pranshu-kumbhare/');
 
                                           },
                                           icon: FaIcon(FontAwesomeIcons.linkedin,size: 35,color: kFontColour),
