@@ -59,6 +59,7 @@ dependencies:
   flutter_sparkline: ^0.1.0
 
 
+
 dependency_overrides:
   flutter_svg: ^0.18.0
 

@@ -8,6 +8,7 @@ import 'package:iiit_suite/src/models/sgpa.dart';
 import 'package:iiit_suite/src/screens/mums/semesterDetails_screen.dart';
 import 'package:iiit_suite/src/modifiedSparkline.dart';
 
+
 class BounceScroll extends ScrollBehavior {
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) =>
