@@ -82,6 +82,10 @@ class CachedSemListWidget extends StatelessWidget {
 //                  width: MediaQuery.of(context).size.width,
                           child: Sparkline(
                             data: getPoints(snapshot.data),
+                            pointSize: 10.0,
+                            pointsMode: PointsMode.all,
+                            pointColor: Colors.purple[200],
+                            lineWidth: 4,
                             lineGradient: new LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
