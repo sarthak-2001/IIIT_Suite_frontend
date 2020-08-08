@@ -190,8 +190,7 @@ class Sparkline extends StatelessWidget {
       maxHeight: fallbackHeight,
       child: new CustomPaint(
         size: Size.infinite,
-        painter: new _SparklinePainter(
-            data,
+        painter: new _SparklinePainter(data,
             lineWidth: lineWidth,
             lineColor: lineColor,
             lineGradient: lineGradient,
@@ -207,33 +206,31 @@ class Sparkline extends StatelessWidget {
             gridLineAmount: gridLineAmount,
             gridLineLabelColor: gridLineLabelColor,
             gridLineWidth: gridLineWidth,
-            labelPrefix: labelPrefix
-        ),
+            labelPrefix: labelPrefix),
       ),
     );
   }
 }
 
 class _SparklinePainter extends CustomPainter {
-  _SparklinePainter(
-      this.dataPoints, {
-        @required this.lineWidth,
-        @required this.lineColor,
-        this.lineGradient,
-        @required this.sharpCorners,
-        @required this.fillMode,
-        @required this.fillColor,
-        this.fillGradient,
-        @required this.pointsMode,
-        @required this.pointSize,
-        @required this.pointColor,
-        @required this.enableGridLines,
-        this.gridLineColor,
-        this.gridLineAmount,
-        this.gridLineWidth,
-        this.gridLineLabelColor,
-        this.labelPrefix
-      })  : _max = dataPoints.reduce(math.max),
+  _SparklinePainter(this.dataPoints,
+      {@required this.lineWidth,
+      @required this.lineColor,
+      this.lineGradient,
+      @required this.sharpCorners,
+      @required this.fillMode,
+      @required this.fillColor,
+      this.fillGradient,
+      @required this.pointsMode,
+      @required this.pointSize,
+      @required this.pointColor,
+      @required this.enableGridLines,
+      this.gridLineColor,
+      this.gridLineAmount,
+      this.gridLineWidth,
+      this.gridLineLabelColor,
+      this.labelPrefix})
+      : _max = dataPoints.reduce(math.max),
         _min = dataPoints.reduce(math.min);
 
   final List<double> dataPoints;
@@ -300,7 +297,8 @@ class _SparklinePainter extends CustomPainter {
     final double heightNormalizer = height / (_max - _min);
 
     final Path path = new Path();
-    final List<Offset> points = <Offset>[];
+    final List<Offset> points =
+        <Offset>[]; ////////////////////////////////////////
 
     Offset startPoint;
 
@@ -337,7 +335,7 @@ class _SparklinePainter extends CustomPainter {
           height - (dataPoints[i] - _min) * heightNormalizer + lineWidth / 2;
 
       if (pointsMode == PointsMode.all) {
-        points.add(new Offset(x, y));
+        if (dataPoints[i] != 0.0) points.add(new Offset(x, y));
       }
 
       if (pointsMode == PointsMode.last && i == dataPoints.length - 1) {

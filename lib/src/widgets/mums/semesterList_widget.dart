@@ -1,16 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
 import 'package:iiit_suite/src/helpers.dart';
 import 'package:iiit_suite/src/models/sgpa.dart';
-//import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:iiit_suite/src/screens/mums/semesterDetails_screen.dart';
 import 'package:iiit_suite/src/modifiedSparkline.dart';
-import 'package:bezier_chart/bezier_chart.dart';
-
 
 class BounceScroll extends ScrollBehavior {
   @override
@@ -57,25 +52,26 @@ class SemListWidget extends StatelessWidget {
                 thickness: 1.0,
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: Column(
                 children: [
                   Container(
-                    height: 100,
-//                  width: MediaQuery.of(context).size.width,
-                   /* child: Sparkline(
+                    height: 130,
+                    child: Sparkline(
                       data: getPoints(SemesterController.semester.sgpa),
-                        pointSize: 10.0,
-                        pointsMode: PointsMode.all,
-                        pointColor: Colors.purple[200],
-                        lineWidth: 4,
-                        lineGradient: new LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.purple[800], Colors.purple[200]],
-                        ),
-                    ),*/
+                      pointSize: 10.0,
+                      pointsMode: PointsMode.all,
+                      pointColor: Colors.purple[200],
+                      lineWidth: 4,
+                      lineGradient: new LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.purple[800], Colors.purple[200]],
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: ScrollConfiguration(
@@ -88,30 +84,6 @@ class SemListWidget extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Column(
                               children: <Widget>[
-                                Container(
-                                  height:150,
-                                  child: BezierChart(
-                                    bezierChartScale: BezierChartScale.CUSTOM,
-                                    xAxisCustomValues:getPoints(SemesterController.semester.sgpa),
-                                    series: [
-                                      BezierLine(
-                                        lineColor: Colors.purple[800],
-                                        lineStrokeWidth: 3.0,
-                                        dataPointFillColor: Colors.purple[800],
-                                        data:[
-                                          DataPoint<double>(value:double.parse(sgpa[index].points),xAxis:double.parse(sgpa[index].sems) )
-                                        ],
-                                      )
-                                    ],
-                                    config: BezierChartConfig(
-                                      verticalIndicatorStrokeWidth: 3.0,
-                                      verticalIndicatorColor: Colors.purple[200],
-                                      showVerticalIndicator: true,
-                                      backgroundColor: kForegroundColour,
-                                      snap: false,
-                                    ),
-                                  ),
-                                ),
                                 InkWell(
                                   onTap: () {
                                     Navigator.push(

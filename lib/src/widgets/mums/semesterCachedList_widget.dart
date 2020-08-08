@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:iiit_suite/src/modifiedSparkline.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
 import 'package:iiit_suite/src/helpers.dart';
@@ -78,9 +78,8 @@ class CachedSemListWidget extends StatelessWidget {
                     return Column(
                       children: [
                         Container(
-                          height: 100,
-//                  width: MediaQuery.of(context).size.width,
-                         /* child: Sparkline(
+                          height: 130,
+                          child: Sparkline(
                             data: getPoints(snapshot.data),
                             pointSize: 10.0,
                             pointsMode: PointsMode.all,
@@ -91,7 +90,7 @@ class CachedSemListWidget extends StatelessWidget {
                               end: Alignment.bottomCenter,
                               colors: [Colors.purple[800], Colors.purple[200]],
                             ),
-                          ),*/
+                          ),
                         ),
                         Expanded(
                           child: ScrollConfiguration(
