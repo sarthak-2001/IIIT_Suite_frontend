@@ -231,7 +231,7 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                     color: kForegroundColour,
                                     child: FacultyController.faculties == null || FacultyController.faculties.length == 0
                                         ? Center(
-                                            child: CircularProgressIndicator(),
+                                            child:SpinKitFadingGrid(color: Colors.white70,),
                                           )
                                         : ScrollConfiguration(
                                             behavior: BounceScroll(),

@@ -156,7 +156,7 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child:
-                                                      SpinKitFadingFour(color: Colors.white70,),
+                                                  CircularProgressIndicator(backgroundColor: Colors.white70,),
                                                 )),
                                         ),
                                       ),

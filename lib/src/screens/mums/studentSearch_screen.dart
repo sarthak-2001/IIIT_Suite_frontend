@@ -201,11 +201,12 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                           child: loading == false
                                               ? Icon(Icons.search,color: kFontColour,)
                                               : Container(
+                                            alignment: Alignment.topRight,
                                                   child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child:
-                                                      SpinKitFadingFour(color: Colors.white70),
+                                                  child:CircularProgressIndicator(backgroundColor: Colors.white70,),
+                                                      //SpinKitHourGlass(color: Colors.white70),
                                                 )),
                                         ),
                                       ),
