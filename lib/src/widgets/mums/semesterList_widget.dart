@@ -64,7 +64,7 @@ class SemListWidget extends StatelessWidget {
                     child: Sparkline(
                       data: getPoints(SemesterController.semester.sgpa),
                         pointSize: 10.0,
-                        pointsMode: PointsMode.last,
+                        pointsMode: PointsMode.all,
                         pointColor: Colors.purple[200],
                         lineWidth: 4,
                         lineGradient: new LinearGradient(

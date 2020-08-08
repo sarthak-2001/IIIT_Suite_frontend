@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/books.dart';
 import 'package:iiit_suite/src/models/user.dart';
@@ -155,7 +156,7 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child:
-                                                      CircularProgressIndicator(),
+                                                      SpinKitFadingFour(color: Colors.white70,),
                                                 )),
                                         ),
                                       ),
