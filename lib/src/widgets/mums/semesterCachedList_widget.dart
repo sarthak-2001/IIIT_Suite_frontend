@@ -80,7 +80,7 @@ class CachedSemListWidget extends StatelessWidget {
                         Container(
                           height: 100,
 //                  width: MediaQuery.of(context).size.width,
-                          child: Sparkline(
+                         /* child: Sparkline(
                             data: getPoints(snapshot.data),
                             pointSize: 10.0,
                             pointsMode: PointsMode.all,
@@ -91,7 +91,7 @@ class CachedSemListWidget extends StatelessWidget {
                               end: Alignment.bottomCenter,
                               colors: [Colors.purple[800], Colors.purple[200]],
                             ),
-                          ),
+                          ),*/
                         ),
                         Expanded(
                           child: ScrollConfiguration(
