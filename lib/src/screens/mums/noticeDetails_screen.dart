@@ -185,16 +185,20 @@ class _NoticeDetailState extends State<NoticeDetail> {
                             Navigator.pop(context);
                           },
                           child: Container(
+                            alignment: Alignment.center,
                             height: 52,
                             width: 52,
                             decoration: new BoxDecoration(
                               color: kForegroundColour,
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: kFontColour,
-                              size: 25,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: kFontColour,
+                                size: 25,
+                              ),
                             ),
                           ),
                         ),
