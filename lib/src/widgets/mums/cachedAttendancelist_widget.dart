@@ -31,10 +31,7 @@ class _CachedAttendanceListWidgetState
               snapshot.data == null ||
               snapshot.data.length == 0)
             return Center(
-              child: CircularProgressIndicator(
-                valueColor:
-                    new AlwaysStoppedAnimation<Color>(kBackgroundColour),
-              ),
+              child: SpinKitFadingGrid(color: Colors.white70),
             );
           return ListView.builder(
               itemCount: snapshot.data.length,
