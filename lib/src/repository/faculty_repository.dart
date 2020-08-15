@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/faculty.dart';
 import 'package:iiit_suite/src/models/user.dart';
+import 'package:iiit_suite/src/widgets/api_request.dart';
 
 Future<List<Faculty>> getFaculty() async {
   String id = User().getId();
@@ -11,7 +12,7 @@ Future<List<Faculty>> getFaculty() async {
   List<Faculty> faculties = [];
   try {
     Response response = await Dio().post(
-        'https://sarthak-mums-iiit.herokuapp.com/facList',
+        faculty,
         data: {"uid": id, "pwd": password});
     for (var map in response.data['faculty']) {
       faculties.add(Faculty(

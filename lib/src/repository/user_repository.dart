@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:iiit_suite/src/widgets/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<bool> login(String id, String password) async {
   bool result;
   try {
     Response response = await Dio().post(
-        'https://sarthak-mums-iiit.herokuapp.com/login',
+        user,
         data: {"uid": id, "pwd": password});
     if (response.data['msg'] == "Welcome")
       result = true;

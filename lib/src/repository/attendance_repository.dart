@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/config/app_database.dart';
 import 'package:iiit_suite/src/models/attendance.dart';
 import 'package:iiit_suite/src/models/user.dart';
+import 'package:iiit_suite/src/widgets/api_request.dart';
 import 'package:sembast/sembast.dart';
 
 class AttendanceDao{
@@ -47,7 +48,7 @@ Future<List<Attendance>> getAttendance() async {
   List<Attendance> attendances = [];
   try {
     Response response = await Dio().post(
-        'https://sarthak-mums-iiit.herokuapp.com/attendance',
+        attendance,
         data: {"uid": id, "pwd": password});
     for (var n in response.data['Attendance']) {
       attendances.add(Attendance(
