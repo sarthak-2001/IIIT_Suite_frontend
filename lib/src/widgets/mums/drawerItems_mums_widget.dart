@@ -26,6 +26,10 @@ class DrawerItemsMums extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.015,
           ),
           DrawerEntries(
+            title: 'Notice board',
+            route: NoticeListScreen(),
+          ),
+          DrawerEntries(
             title: 'Intranet Resources',
             route: IntraNoticeListScreen(),
           ),
@@ -33,15 +37,12 @@ class DrawerItemsMums extends StatelessWidget {
             title: 'Test board',
             route: Testing(),
           ),*/
-          DrawerEntries(
-            title: 'Notice board',
-            route: NoticeListScreen(),
-          ),
+
           DrawerEntries(
             title: 'Bookmarks',
             route: NoticeBookmarkScreen(),
           ),
-          DrawerEntries(title: 'Student Notice Board'),
+//          DrawerEntries(title: 'Student Notice Board'),
           DrawerEntries(
             title: 'View Grades',
             route: GradeScreen(),
@@ -68,8 +69,8 @@ class DrawerItemsMums extends StatelessWidget {
             thickness: 1.5,
           ),
           DrawerEntries(
-              title: 'About Developer',
-              route:DeveloperScreen(),
+            title: 'About Developer',
+            route: DeveloperScreen(),
           ),
           DrawerEntries(
             title: 'Privacy Policy',
