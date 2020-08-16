@@ -43,15 +43,12 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape:  RoundedRectangleBorder(
-              borderRadius:
-              BorderRadius.circular(15.0)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           backgroundColor: kForegroundColour,
           title: new Text(
             "${student.name}",
-            style: TextStyle(
-                color: Color(0xffEDE7F6)
-            ),
+            style: TextStyle(color: Color(0xffEDE7F6)),
             textAlign: TextAlign.center,
           ),
           content: CachedNetworkImage(
@@ -133,12 +130,12 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                 color: kForegroundColour,
                                 shape: BoxShape.circle,
                               ),*/
-                              child: Icon(
-                                Icons.dehaze,
-                                color: kFontColour,
-                                size: 30,
-                              ),
-                           // ),
+                            child: Icon(
+                              Icons.dehaze,
+                              color: kFontColour,
+                              size: 30,
+                            ),
+                            // ),
                           ),
                         ),
                       ],
@@ -180,8 +177,8 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                       },
                                       decoration: InputDecoration(
                                         focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.white)
-                                        ),
+                                            borderSide: BorderSide(
+                                                color: Colors.white)),
                                         suffixIcon: InkWell(
                                           onTap: () async {
                                             SystemChannels.textInput
@@ -199,14 +196,23 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                             });
                                           },
                                           child: loading == false
-                                              ? Icon(Icons.search,color: kFontColour,)
+                                              ? Icon(
+                                                  Icons.search,
+                                                  color: kFontColour,
+                                                )
                                               : Container(
-                                            alignment: Alignment.topRight,
+//                                            alignment: Alignment.topRight,
                                                   child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child:CircularProgressIndicator(backgroundColor: Colors.white70,),
-                                                      //SpinKitHourGlass(color: Colors.white70),
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        new AlwaysStoppedAnimation<
+                                                                Color>(
+                                                            kBackgroundColour),
+                                                  ),
+                                                  //SpinKitHourGlass(color: Colors.white70),
                                                 )),
                                         ),
                                       ),
@@ -220,12 +226,12 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                 color: kForegroundColour,
                                 child: students.length == 0
                                     ? Center(
-                                        child: Text(" 'Search by Name and Id' ",
+                                        child: Text(
+                                          " 'Search by Name and Id' ",
                                           style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 18,
-                                            color: kFontColour
-                                          ),
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18,
+                                              color: kFontColour),
                                         ),
                                       )
                                     : ScrollConfiguration(
@@ -243,23 +249,26 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Row(
                                                     children: <Widget>[
-                                                      Text(students[index].id,
+                                                      Text(
+                                                        students[index].id,
                                                         style: TextStyle(
-                                                            fontWeight: FontWeight.w400,
-                                                            color: Color(0xffE1BEE7),
-                                                            fontSize:15
-                                                        ),
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Color(
+                                                                0xffE1BEE7),
+                                                            fontSize: 15),
                                                       ),
                                                       SizedBox(
                                                         width: 20,
                                                       ),
                                                       Text(
-                                                          students[index].name,
+                                                        students[index].name,
                                                         style: TextStyle(
-                                                            fontWeight: FontWeight.w700,
-                                                            color: Color(0xffEDE7F6),
-                                                            fontSize:15
-                                                        ),
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: Color(
+                                                                0xffEDE7F6),
+                                                            fontSize: 15),
                                                       ),
                                                     ],
                                                   ),
