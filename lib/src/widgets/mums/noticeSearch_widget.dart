@@ -26,16 +26,22 @@ class noticeSearchWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Text(
-                      'Search notice by title, content, publisher, date(YYYY-MM-DD)',
-                      style: TextStyle(color: kFontColour),
+                      " 'Search notices by title, content, publisher, date(YYYY-MM-DD)' ",
+                      style: TextStyle(
+                          color: kFontColour,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
                 failure: Center(
                   child: Text(
-                    'No such notices found',
-                    style: TextStyle(color: kFontColour),
+                    " 'No Notice' ",
+                    style: TextStyle(
+                        color: kFontColour,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
                 filter: (notice) => [
@@ -50,7 +56,6 @@ class noticeSearchWidget extends StatelessWidget {
                   color: kForegroundColour,
                   child: InkWell(
                     onTap: () {
-                      //TODO: after switching to named routes use pop and pushNamed
                       Navigator.push(
                         context,
                         PageRouteTransition(
@@ -138,11 +143,11 @@ class noticeSearchWidget extends StatelessWidget {
             color: kForegroundColour,
             shape: BoxShape.circle,
           ),*/
-          child: Icon(
-            Icons.search,
-            color: kFontColour,
-            size: 30,
-          ),
+        child: Icon(
+          Icons.search,
+          color: kFontColour,
+          size: 30,
+        ),
         //),
       ),
     );
