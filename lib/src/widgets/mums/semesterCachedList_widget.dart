@@ -66,6 +66,9 @@ class CachedSemListWidget extends StatelessWidget {
                 thickness: 1.0,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: FutureBuilder<List<Sgpa>>(
                   future: SemesterDao().getSem(),

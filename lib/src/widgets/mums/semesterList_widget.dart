@@ -53,7 +53,7 @@ class SemListWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Expanded(
               child: Column(
@@ -97,7 +97,8 @@ class SemListWidget extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(horizontal:12),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 12),
                                       width: MediaQuery.of(context).size.width,
                                       height:
                                           MediaQuery.of(context).size.height *
