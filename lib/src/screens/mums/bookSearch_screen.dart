@@ -10,7 +10,6 @@ import 'package:iiit_suite/src/widgets/mums/mums_drawer_widget.dart';
 
 import '../../constants.dart';
 
-
 class BounceScroll extends ScrollBehavior {
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) =>
@@ -115,7 +114,8 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextField(
-                                      style: TextStyle(color: Color(0xffF5F5F5)),
+                                      style:
+                                          TextStyle(color: Color(0xffF5F5F5)),
                                       textInputAction: TextInputAction.search,
                                       controller: _controller,
                                       enableSuggestions: true,
@@ -125,7 +125,8 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                         setState(() {
                                           loading = true;
                                         });
-                                        List<Book> mock = await getBooks(_controller.text);
+                                        List<Book> mock =
+                                            await getBooks(_controller.text);
                                         setState(() {
                                           books = mock;
                                           loading = false;
@@ -133,12 +134,13 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                       },
                                       decoration: InputDecoration(
                                         focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.white)
-                                        ),
+                                            borderSide: BorderSide(
+                                                color: Colors.white)),
                                         suffixIcon: InkWell(
                                           onTap: () async {
                                             SystemChannels.textInput
-                                                .invokeListMethod('TextInput.hide');
+                                                .invokeListMethod(
+                                                    'TextInput.hide');
                                             setState(() {
                                               loading = true;
                                             });
@@ -150,13 +152,22 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                             });
                                           },
                                           child: loading == false
-                                              ? Icon(Icons.search,color: Colors.white,)
+                                              ? Icon(
+                                                  Icons.search,
+                                                  color: Colors.white,
+                                                )
                                               : Container(
+//                                            alignment: Alignment.topRight,
                                                   child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child:
-                                                  CircularProgressIndicator(backgroundColor: Colors.white70,),
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        new AlwaysStoppedAnimation<
+                                                                Color>(
+                                                            kBackgroundColour),
+                                                  ),
                                                 )),
                                         ),
                                       ),
@@ -170,7 +181,11 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                 color: kForegroundColour,
                                 child: books.length == 0
                                     ? Center(
-                                        child: Text(" 'Search by Name' ",style: TextStyle(color: kFontColour,fontSize: 18),),
+                                        child: Text(
+                                          " 'Search by Name' ",
+                                          style: TextStyle(
+                                              color: kFontColour, fontSize: 18),
+                                        ),
                                       )
                                     : ScrollConfiguration(
                                         behavior: BounceScroll(),
@@ -178,8 +193,11 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                             itemCount: books.length,
                                             itemBuilder: (context, index) {
                                               return Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0,
+                                                    right: 8,
+                                                    bottom: 8,
+                                                    top: 4),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -195,15 +213,22 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                                                        ),*/
                                                     IntrinsicHeight(
                                                       child: Text(
-                                                          books[index].name,
-                                                      style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.w500,
-                                                        color: kFontColour
-                                                      ),),
+                                                        books[index].name,
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: kFontColour),
+                                                      ),
                                                     ),
                                                     SizedBox(
-                                                      width: MediaQuery.of(context).size.width,
+                                                      height: 4,
+                                                    ),
+                                                    SizedBox(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
                                                       child: Divider(
                                                         color: Colors.black,
                                                         thickness: 1.0,
@@ -217,8 +242,7 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
                               ),
                             )
                           ],
-                        )
-                    ),
+                        )),
                   ),
                 ),
               )

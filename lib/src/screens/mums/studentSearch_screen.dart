@@ -212,7 +212,6 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                                                 Color>(
                                                             kBackgroundColour),
                                                   ),
-                                                  //SpinKitHourGlass(color: Colors.white70),
                                                 )),
                                         ),
                                       ),

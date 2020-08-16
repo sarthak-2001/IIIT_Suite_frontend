@@ -306,7 +306,7 @@ class _FacultySearchScreenState extends StateMVC<FacultySearchScreen> {
                                     child: items.isEmpty
                                         ? Center(
                                             child: Text(
-                                              " No result ",
+                                              " 'No result' ",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w700,
                                                   color: Color(0xffEDE7F6),
