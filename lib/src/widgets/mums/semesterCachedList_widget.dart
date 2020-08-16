@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/modifiedSparkline.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/semester_controller.dart';
@@ -73,7 +74,7 @@ class CachedSemListWidget extends StatelessWidget {
                         snapshot.data == null ||
                         snapshot.data.length == 0)
                       return Center(
-                        child: CircularProgressIndicator(),
+                        child: SpinKitFadingGrid(color: Colors.white70),
                       );
                     return Column(
                       children: [

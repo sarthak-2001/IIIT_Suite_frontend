@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/models/notice.dart';
 import 'package:iiit_suite/src/repository/notice_repository.dart';
@@ -17,10 +18,11 @@ class CachedNoticeListWidget extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.data.length == 0)
                 return Center(
-                  child: CircularProgressIndicator(
+                  child:SpinKitFadingGrid(color: Colors.white70),
+                  /* CircularProgressIndicator(
                     valueColor:
                         new AlwaysStoppedAnimation<Color>(kBackgroundColour),
-                  ),
+                  ),*/
                 );
               return ListView.builder(
                 itemCount: snapshot.data.length,

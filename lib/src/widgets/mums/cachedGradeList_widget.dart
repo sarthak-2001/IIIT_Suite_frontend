@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/grades_controller.dart';
 import 'package:iiit_suite/src/models/grades.dart';
@@ -30,7 +31,7 @@ class CachedGradeListWidget extends StatelessWidget {
               snapshot.data.length == 0)
             return Expanded(
               child: Center(
-                child: CircularProgressIndicator(),
+                child: SpinKitFadingGrid(color: Colors.white70),
               ),
             );
           return Expanded(
