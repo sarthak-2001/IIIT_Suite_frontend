@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/controllers/intraNotice_controller.dart';
 import 'package:iiit_suite/src/models/user.dart';
@@ -92,14 +93,14 @@ class _IntraNoticeListScreenState extends StateMVC<IntraNoticeListScreen> {
                                   color: kForegroundColour,
                                   shape: BoxShape.circle,
                                 ),*/
-                                child: Icon(
-                                  Icons.dehaze,
-                                  color: kFontColour,
-                                  size: 30,
-                                ),
+                              child: Icon(
+                                Icons.dehaze,
+                                color: kFontColour,
+                                size: 30,
                               ),
                             ),
-                         // ),
+                          ),
+                          // ),
                         ],
                       ),
                     ],
@@ -113,7 +114,11 @@ class _IntraNoticeListScreenState extends StateMVC<IntraNoticeListScreen> {
                       child: Container(
                         decoration: BoxDecoration(color: kForegroundColour),
                         child: (IntraNoticeController.notices == null)
-                            ? Center(child: CircularProgressIndicator())
+                            ? Center(
+                                child: SpinKitFadingGrid(
+                                  color: Colors.white70,
+                                ),
+                              )
                             : NoticeListWidget(con: 0),
                       ),
                     ),
