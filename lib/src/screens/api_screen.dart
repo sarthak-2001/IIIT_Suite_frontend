@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:iiit_suite/src/models/user.dart';
 import 'package:iiit_suite/src/repository/attendance_repository.dart';
 import 'package:iiit_suite/src/repository/book_repository.dart';
 import 'package:iiit_suite/src/repository/faculty_repository.dart';
 import 'package:iiit_suite/src/repository/grade_repository.dart';
 import 'package:iiit_suite/src/repository/semester_repository.dart';
 import 'package:iiit_suite/src/repository/student_repository.dart';
+import 'package:iiit_suite/src/repository/user_repository.dart';
 
 class Testing extends StatefulWidget {
   @override
@@ -23,9 +25,9 @@ class _TestingState extends State<Testing> {
           children: <Widget>[
             RaisedButton(
               onPressed: () async {
-                await getAttendance();
+                await getName(User.id, User.password);
               },
-              child: Text('Attenance'),
+              child: Text('name'),
             ),
             RaisedButton(
               onPressed: () async {

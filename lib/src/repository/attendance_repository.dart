@@ -3,19 +3,19 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/config/app_database.dart';
 import 'package:iiit_suite/src/models/attendance.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 import 'package:sembast/sembast.dart';
 
-class AttendanceDao{
+class AttendanceDao {
   static const String STORE_NAME = 'attendance';
   final _attendanceStore = intMapStoreFactory.store(STORE_NAME);
 
   Future<Database> get _db async => await AppDatabase.instance.database;
 
-  Future insert(Attendance attendance) async{
-    final finder =Finder(filter: Filter.equals('coid', attendance.coid));
-    var isUpdated =
-    await _attendanceStore.update(await _db, attendance.toMap(), finder: finder);
+  Future insert(Attendance attendance) async {
+    final finder = Finder(filter: Filter.equals('coid', attendance.coid));
+    var isUpdated = await _attendanceStore.update(await _db, attendance.toMap(),
+        finder: finder);
     if (isUpdated == 0) {
       await _attendanceStore.add(await _db, attendance.toMap());
     }
@@ -47,9 +47,8 @@ Future<List<Attendance>> getAttendance() async {
   print(password);
   List<Attendance> attendances = [];
   try {
-    Response response = await Dio().post(
-        attendance,
-        data: {"uid": id, "pwd": password});
+    Response response =
+        await Dio().post(attendance, data: {"uid": id, "pwd": password});
     for (var n in response.data['Attendance']) {
       attendances.add(Attendance(
           coid: n['coid'],

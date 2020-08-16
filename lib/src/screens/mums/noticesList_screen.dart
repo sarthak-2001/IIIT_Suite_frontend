@@ -33,7 +33,8 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
   String id = '';
 
   void getId() {
-    id = User().getId();
+    id = User().getname().toUpperCase();
+    if (id == '') id = User().getId();
   }
 
   @override

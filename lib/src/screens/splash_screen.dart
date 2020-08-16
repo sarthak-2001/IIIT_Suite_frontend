@@ -24,8 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences loginData = await SharedPreferences.getInstance();
     String id = loginData.getString('id');
     String password = loginData.getString('password');
+    String name = loginData.getString('name');
     if (id != null) {
-      User().write(id, password);
+      User().write(id, password, name);
       Navigator.pushReplacement(
           context,
           PageRouteTransition(

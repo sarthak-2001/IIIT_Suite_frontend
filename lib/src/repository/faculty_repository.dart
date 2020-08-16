@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/faculty.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 
 Future<List<Faculty>> getFaculty() async {
   String id = User().getId();
@@ -11,9 +11,8 @@ Future<List<Faculty>> getFaculty() async {
   print('faculty trigger');
   List<Faculty> faculties = [];
   try {
-    Response response = await Dio().post(
-        faculty,
-        data: {"uid": id, "pwd": password});
+    Response response =
+        await Dio().post(faculty, data: {"uid": id, "pwd": password});
     for (var map in response.data['faculty']) {
       faculties.add(Faculty(
           id: map['id'],

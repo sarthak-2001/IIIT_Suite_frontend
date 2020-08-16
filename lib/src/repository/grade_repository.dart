@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/config/app_database.dart';
 import 'package:iiit_suite/src/models/grades.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 import 'package:sembast/sembast.dart';
 
 Future<List<Grade>> getGrade(String sem) async {
@@ -12,9 +12,8 @@ Future<List<Grade>> getGrade(String sem) async {
   String password = User().getPassword();
   List<Grade> grades = [];
   try {
-    Response response = await Dio().post(
-        grade,
-        data: {"uid": id, "pwd": password, "sem": sem});
+    Response response =
+        await Dio().post(grade, data: {"uid": id, "pwd": password, "sem": sem});
 //    Response response = await Dio().post(
 //        'https://sarthak-mums-iiit.herokuapp.com/grades',
 //        data: {"uid": id, "pwd": password, "sem": "3"});

@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<bool> login(String id, String password) async {
   bool result;
   try {
-    Response response = await Dio().post(
-        user,
-        data: {"uid": id, "pwd": password});
+    Response response =
+        await Dio().post(user, data: {"uid": id, "pwd": password});
     if (response.data['msg'] == "Welcome")
       result = true;
     else
@@ -22,8 +21,28 @@ Future<bool> login(String id, String password) async {
   }
 }
 
+Future<String> getName(String id, String password) async {
+  String name;
+  try {
+    Response response = await Dio().post(
+        'https://sarthak-mums-iiit.herokuapp.com/name',
+        data: {"uid": id, "pwd": password});
+//    print(response);
+    name = response.data['name'];
+    name = name.toString();
+    print(name);
+    return name;
+  } catch (e) {
+    print(e);
+    Fluttertoast.showToast(
+        msg: 'Unable to reach server', toastLength: Toast.LENGTH_LONG);
+    return '';
+  }
+}
+
 Future logout() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.remove('name');
   await prefs.remove('id');
   await prefs.remove('password');
 }

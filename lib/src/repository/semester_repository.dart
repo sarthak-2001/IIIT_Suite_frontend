@@ -5,7 +5,7 @@ import 'package:iiit_suite/src/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/semester.dart';
 import 'package:dio/dio.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 import 'package:sembast/sembast.dart';
 
 Future<Semester> getSemester() async {
@@ -14,9 +14,8 @@ Future<Semester> getSemester() async {
   String password = User().getPassword();
   List<Sgpa> sgpa = [];
   try {
-    Response response = await Dio().post(
-        semesters,
-        data: {"uid": id, "pwd": password});
+    Response response =
+        await Dio().post(semesters, data: {"uid": id, "pwd": password});
 
     String cgpa = (response.data['sems'][0]['cgpa']).toString();
 

@@ -2,16 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iiit_suite/src/models/student.dart';
 import 'package:iiit_suite/src/models/user.dart';
-import 'package:iiit_suite/src/widgets/api_request.dart';
+import 'package:iiit_suite/src/config/api_request.dart';
 
 Future<List<Student>> getStudents(String string) async {
   String id = User().getId();
   String password = User().getPassword();
   List<Student> students = [];
   try {
-    Response response = await Dio().post(
-        student,
-        data: {"uid": id, "pwd": password, "search": string});
+    Response response = await Dio()
+        .post(student, data: {"uid": id, "pwd": password, "search": string});
     for (var n in response.data['student']) {
       students.add(Student(
         id: n['id'],

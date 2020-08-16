@@ -33,10 +33,10 @@ class DrawerItemsMums extends StatelessWidget {
             title: 'Intranet Resources',
             route: IntraNoticeListScreen(),
           ),
-          /*DrawerEntries(
-            title: 'Test board',
-            route: Testing(),
-          ),*/
+//          DrawerEntries(
+//            title: 'Test board',
+//            route: Testing(),
+//          ),
 
           DrawerEntries(
             title: 'Bookmarks',
