@@ -14,7 +14,7 @@ class _ITSScreenState extends State<ITSScreen> {
         backgroundColor: kBackgroundColour,
         body: Center(
           child: Text(
-            'ITS',
+            'Coming Soon',
             style: TextStyle(fontSize: 30, color: Color(0xffffffff)),
           ),
         ),

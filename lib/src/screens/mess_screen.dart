@@ -14,7 +14,7 @@ class _MessScreenState extends State<MessScreen> {
         backgroundColor: kBackgroundColour,
         body: Center(
           child: Text(
-            'Mess',
+            'Coming Soon',
             style: TextStyle(fontSize: 30, color: Color(0xffffffff)),
           ),
         ),
