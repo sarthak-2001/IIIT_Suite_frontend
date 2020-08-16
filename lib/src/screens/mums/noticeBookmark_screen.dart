@@ -18,7 +18,6 @@ class NoticeBookmarkScreen extends StatefulWidget {
 }
 
 class _NoticeBookmarkScreenState extends State<NoticeBookmarkScreen> {
-
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -92,10 +91,19 @@ class _NoticeBookmarkScreenState extends State<NoticeBookmarkScreen> {
                             decoration: BoxDecoration(color: kForegroundColour),
                             child: (snapshot.data.length == 0)
                                 ? Center(
-                                    child: Text(
-                                    'No bookmarks yet!',
-                                    style: TextStyle(color: kFontColour),
-                                  ))
+                                    child:
+//                                    Text(
+//                                    'No bookmarks yet!',
+//                                    style: TextStyle(color: kFontColour),
+//                                  ),
+                                        Text(
+                                      " 'No Bookmarks Yet' ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                          color: kFontColour),
+                                    ),
+                                  )
                                 : BookmarkListWidget(
                                     bookmarks: snapshot.data.reversed.toList(),
                                   ),
