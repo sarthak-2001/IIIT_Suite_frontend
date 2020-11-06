@@ -34,8 +34,8 @@ Future<String> getName(String id, String password) async {
     return name;
   } catch (e) {
     print(e);
-    Fluttertoast.showToast(
-        msg: 'Unable to reach server', toastLength: Toast.LENGTH_LONG);
+//    Fluttertoast.showToast(
+//        msg: 'Unable to reach server', toastLength: Toast.LENGTH_LONG);
     return '';
   }
 }
