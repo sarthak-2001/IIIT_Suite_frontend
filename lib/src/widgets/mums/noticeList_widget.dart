@@ -14,7 +14,11 @@ class BounceScroll extends ScrollBehavior {
 }
 
 class NoticeListWidget extends StatelessWidget {
-  const NoticeListWidget({Key key, @required int con,})  : _con = con, super(key: key);
+  const NoticeListWidget({
+    Key key,
+    @required int con,
+  })  : _con = con,
+        super(key: key);
 
   final int _con;
 
@@ -77,6 +81,7 @@ class NoticeListWidget extends StatelessWidget {
                                       .toUpperCase(),
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
+                                      fontStyle: FontStyle.italic,
                                       fontWeight: FontWeight.w300,
                                       fontSize: 10,
                                       color: kFontColour),
@@ -107,6 +112,7 @@ class NoticeListWidget extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
+                                            fontStyle: FontStyle.italic,
                                             fontWeight: FontWeight.w300,
                                             fontSize: 10,
                                             color: kFontColour),

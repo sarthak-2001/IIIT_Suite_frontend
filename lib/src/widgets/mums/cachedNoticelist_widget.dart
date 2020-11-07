@@ -18,7 +18,7 @@ class CachedNoticeListWidget extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.data.length == 0)
                 return Center(
-                  child:SpinKitFadingGrid(color: Colors.white70),
+                  child: SpinKitFadingGrid(color: Colors.white70),
                   /* CircularProgressIndicator(
                     valueColor:
                         new AlwaysStoppedAnimation<Color>(kBackgroundColour),
@@ -70,12 +70,14 @@ class CachedNoticeListWidget extends StatelessWidget {
                                             .toUpperCase(),
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
+                                            fontStyle: FontStyle.italic,
                                             fontWeight: FontWeight.w300,
                                             fontSize: 10,
                                             color: kFontColour),
                                       )
                                     ],
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                   ),
                                 ),
                                 Expanded(
@@ -84,7 +86,8 @@ class CachedNoticeListWidget extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
                                       Text(
-                                        '${localNotices[index].date}'.toUpperCase(),
+                                        '${localNotices[index].date}'
+                                            .toUpperCase(),
                                         textAlign: TextAlign.right,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w300,
@@ -98,6 +101,7 @@ class CachedNoticeListWidget extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
+                                            fontStyle: FontStyle.italic,
                                             fontWeight: FontWeight.w300,
                                             fontSize: 10,
                                             color: kFontColour),
