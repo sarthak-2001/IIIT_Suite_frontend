@@ -236,7 +236,7 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                                   child: students.length == 0
                                       ? Center(
                                           child: Text(
-                                            " 'Search by Name and Id' ",
+                                            " 'Search by Name or Id' ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 18,
