@@ -82,7 +82,7 @@ class _NoticeListScreenState extends StateMVC<NoticeListScreen> {
                                   style: TextStyle(
                                       fontStyle: FontStyle.normal,
                                       height: 1,
-                                      color: kFontColour,
+                                      color: kHelloColour,
                                       fontSize: 36,
                                       fontWeight: FontWeight.w800))
                             ],
