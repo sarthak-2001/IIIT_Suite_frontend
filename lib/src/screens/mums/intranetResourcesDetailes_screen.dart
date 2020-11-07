@@ -215,9 +215,9 @@ class _IntraNoticeDetailState extends State<IntraNoticeDetail> {
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
-                              Icons.arrow_back_ios,
+                              Icons.keyboard_arrow_left,
                               color: kFontColour,
-                              size: 25,
+                              size: 35,
                             ),
                           ),
                         ),

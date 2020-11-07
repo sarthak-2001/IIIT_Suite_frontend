@@ -122,7 +122,8 @@ class _NoticeDetailState extends State<NoticeDetail> {
                     child: Container(
                       color: Color(0xff0F0C12),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 18.0,right: 18.0,top: 35,bottom: 18),
+                        padding: const EdgeInsets.only(
+                            left: 18.0, right: 18.0, top: 35, bottom: 18),
                         child: SelectableText(
                           '${widget.notice.content}',
                           style: TextStyle(fontSize: 14, color: kFontColour),
@@ -185,20 +186,16 @@ class _NoticeDetailState extends State<NoticeDetail> {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            alignment: Alignment.center,
                             height: 52,
                             width: 52,
                             decoration: new BoxDecoration(
                               color: kForegroundColour,
                               shape: BoxShape.circle,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Icon(
-                                Icons.arrow_back_ios,
-                                color: kFontColour,
-                                size: 25,
-                              ),
+                            child: Icon(
+                              Icons.keyboard_arrow_left,
+                              color: kFontColour,
+                              size: 35,
                             ),
                           ),
                         ),
