@@ -133,7 +133,7 @@ class _CachedAttendanceListWidgetState
                                             ),
                                           ),
                                           Text(
-                                            '${attendances[index].last_updated}',
+                                            '${(attendances[index].last_updated == '0') ? '_' : attendances[index].last_updated}',
                                             style: TextStyle(
                                               fontSize: 15.0,
                                               color: Colors.white,
