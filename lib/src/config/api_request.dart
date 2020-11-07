@@ -4,6 +4,7 @@ String attendance = "http://placement.iiit-bh.ac.in/api/hibi/attendance";
 String bookSearch = "http://placement.iiit-bh.ac.in/api/hibi/booksrch";
 String user = "http://placement.iiit-bh.ac.in/api/hibi/login";
 String faculty = "http://placement.iiit-bh.ac.in/api/hibi/facList";
+String facultyImage = "http://placement.iiit-bh.ac.in/api/hibi/facimg";
 String grade = "http://placement.iiit-bh.ac.in/api/hibi/grades";
 String intranet = "http://placement.iiit-bh.ac.in/api/hibi/intra";
 String notice = "http://placement.iiit-bh.ac.in/api/hibi/notices";

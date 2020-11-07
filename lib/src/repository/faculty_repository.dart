@@ -23,9 +23,9 @@ Future<List<Faculty>> getFaculty() async {
 
     print('fetched faculty');
     print(faculties.length);
-    for (Faculty a in faculties) {
-      print(a.name);
-    }
+//    for (Faculty a in faculties) {
+//      print(a.name);
+//    }
 
     faculties.sort((a, b) {
       return a.dept
@@ -47,9 +47,8 @@ Future<String> getFacultyImage(String link1) async {
   String password = User().getPassword();
   String link;
   try {
-    Response response = await Dio().post(
-        'https://sarthak-mums-iiit.herokuapp.com/facimg',
-        data: {"uid": id, "pwd": password, "link": link1});
+    Response response = await Dio()
+        .post(facultyImage, data: {"uid": id, "pwd": password, "link": link1});
 
     link = response.data['link'];
     print('fetched link');
