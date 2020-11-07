@@ -40,67 +40,75 @@ class _AttendanceScreenState extends StateMVC<AttendanceScreen> {
     }
   }
 
+  Future<bool> _willPopCallback() async {
+    Navigator.pushReplacementNamed(context, '/home');
+    return Future.value(true);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: kBackgroundColour,
-        endDrawerEnableOpenDragGesture: true,
-        endDrawer: MumsDrawerWidget(),
-        body: RefreshIndicator(
-          onRefresh: _con.refreshAttendance,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-            child: Column(
-              children: <Widget>[
-                IntrinsicHeight(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 9,
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Attendance",
-                            style: TextStyle(
-                                color: kFontColour,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 26,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              onTap: () {
-                                scaffoldKey.currentState.openEndDrawer();
-                              },
-
-                              child: Icon(
-                                Icons.dehaze,
-                                color: kFontColour,
-                                size: 30,
-                              ),
-                              // ),
+    return WillPopScope(
+      onWillPop: _willPopCallback,
+      child: SafeArea(
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: kBackgroundColour,
+          endDrawerEnableOpenDragGesture: true,
+          endDrawer: MumsDrawerWidget(),
+          body: RefreshIndicator(
+            onRefresh: _con.refreshAttendance,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+              child: Column(
+                children: <Widget>[
+                  IntrinsicHeight(
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 9,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Attendance",
+                              style: TextStyle(
+                                  color: kFontColour,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                onTap: () {
+                                  scaffoldKey.currentState.openEndDrawer();
+                                },
+
+                                child: Icon(
+                                  Icons.dehaze,
+                                  color: kFontColour,
+                                  size: 30,
+                                ),
+                                // ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: (AttendanceController.attendance == null)
-                        ? CachedAttendanceListWidget()
-                        : AttendanceListWidget(),
-                  ),
-                )
-              ],
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: (AttendanceController.attendance == null)
+                          ? CachedAttendanceListWidget()
+                          : AttendanceListWidget(),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

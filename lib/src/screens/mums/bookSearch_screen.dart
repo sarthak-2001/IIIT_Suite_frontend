@@ -41,212 +41,227 @@ class _BookSearchScreenState extends State<BookSearchScreen> {
     getCreds();
   }
 
+  Future<bool> _willPopCallback() async {
+    Navigator.pushReplacementNamed(context, '/home');
+    return Future.value(true);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: kBackgroundColour,
-        endDrawerEnableOpenDragGesture: true,
-        endDrawer: MumsDrawerWidget(),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(21.0, 12, 21, 12),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              IntrinsicHeight(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 9,
-                      child: RichText(
-                        text: TextSpan(
-                          text: "Book Search",
-                          style: TextStyle(
-                              color: kFontColour,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 26,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              scaffoldKey.currentState.openEndDrawer();
-                            },
-                            /*child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: new BoxDecoration(
-                                color: kForegroundColour,
-                                shape: BoxShape.circle,
-                              ),*/
-                            child: Icon(
-                              Icons.dehaze,
-                              color: kFontColour,
-                              size: 30,
-                            ),
-                            // ),
+    return WillPopScope(
+      onWillPop: _willPopCallback,
+      child: SafeArea(
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: kBackgroundColour,
+          endDrawerEnableOpenDragGesture: true,
+          endDrawer: MumsDrawerWidget(),
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(21.0, 12, 21, 12),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                IntrinsicHeight(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 9,
+                        child: RichText(
+                          text: TextSpan(
+                            text: "Book Search",
+                            style: TextStyle(
+                                color: kFontColour,
+                                fontStyle: FontStyle.normal,
+                                fontSize: 26,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: () {
+                                scaffoldKey.currentState.openEndDrawer();
+                              },
+                              /*child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: new BoxDecoration(
+                                  color: kForegroundColour,
+                                  shape: BoxShape.circle,
+                                ),*/
+                              child: Icon(
+                                Icons.dehaze,
+                                color: kFontColour,
+                                size: 30,
+                              ),
+                              // ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                        decoration: BoxDecoration(color: kForegroundColour),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextField(
-                                      style:
-                                          TextStyle(color: Color(0xffF5F5F5)),
-                                      textInputAction: TextInputAction.search,
-                                      controller: _controller,
-                                      enableSuggestions: true,
-                                      onEditingComplete: () async {
-                                        SystemChannels.textInput
-                                            .invokeListMethod('TextInput.hide');
-                                        setState(() {
-                                          loading = true;
-                                        });
-                                        List<Book> mock =
-                                            await getBooks(_controller.text);
-                                        setState(() {
-                                          books = mock;
-                                          loading = false;
-                                        });
-                                      },
-                                      decoration: InputDecoration(
-                                        focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white)),
-                                        suffixIcon: InkWell(
-                                          onTap: () async {
-                                            SystemChannels.textInput
-                                                .invokeListMethod(
-                                                    'TextInput.hide');
-                                            setState(() {
-                                              loading = true;
-                                            });
-                                            List<Book> mock = await getBooks(
-                                                _controller.text);
-                                            setState(() {
-                                              books = mock;
-                                              loading = false;
-                                            });
-                                          },
-                                          child: loading == false
-                                              ? Icon(
-                                                  Icons.search,
-                                                  color: Colors.white,
-                                                )
-                                              : Container(
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                          decoration: BoxDecoration(color: kForegroundColour),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextField(
+                                        style:
+                                            TextStyle(color: Color(0xffF5F5F5)),
+                                        textInputAction: TextInputAction.search,
+                                        controller: _controller,
+                                        enableSuggestions: true,
+                                        onEditingComplete: () async {
+                                          SystemChannels.textInput
+                                              .invokeListMethod(
+                                                  'TextInput.hide');
+                                          setState(() {
+                                            loading = true;
+                                          });
+                                          List<Book> mock =
+                                              await getBooks(_controller.text);
+                                          setState(() {
+                                            books = mock;
+                                            loading = false;
+                                          });
+                                        },
+                                        decoration: InputDecoration(
+                                          focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.white)),
+                                          suffixIcon: InkWell(
+                                            onTap: () async {
+                                              SystemChannels.textInput
+                                                  .invokeListMethod(
+                                                      'TextInput.hide');
+                                              setState(() {
+                                                loading = true;
+                                              });
+                                              List<Book> mock = await getBooks(
+                                                  _controller.text);
+                                              setState(() {
+                                                books = mock;
+                                                loading = false;
+                                              });
+                                            },
+                                            child: loading == false
+                                                ? Icon(
+                                                    Icons.search,
+                                                    color: Colors.white,
+                                                  )
+                                                : Container(
 //                                            alignment: Alignment.topRight,
-                                                  child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        new AlwaysStoppedAnimation<
-                                                                Color>(
-                                                            kBackgroundColour),
-                                                  ),
-                                                )),
+                                                    child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          new AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                              kBackgroundColour),
+                                                    ),
+                                                  )),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Expanded(
-                              child: Container(
-                                color: kForegroundColour,
-                                child: books.length == 0
-                                    ? Center(
-                                        child: Text(
-                                          " 'Search by Name' ",
-                                          style: TextStyle(
-                                              color: kFontColour, fontSize: 18),
-                                        ),
-                                      )
-                                    : ScrollConfiguration(
-                                        behavior: BounceScroll(),
-                                        child: ListView.builder(
-                                            itemCount: books.length,
-                                            itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0,
-                                                    right: 8,
-                                                    bottom: 8,
-                                                    top: 4),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    /*Text(
-                                                      books[index].id,
-                                                      style: TextStyle(
-                                                        color: Color(0xffd5c0f4)
-                                                      ),
-
-                                                       ),*/
-                                                    IntrinsicHeight(
-                                                      child: Text(
-                                                        books[index].name,
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            color: kFontColour),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 4,
-                                                    ),
-                                                    SizedBox(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      child: Divider(
-                                                        color: Colors.black,
-                                                        thickness: 1.0,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              );
-                                            }),
-                                      ),
+                                ],
                               ),
-                            )
-                          ],
-                        )),
+                              Expanded(
+                                child: Container(
+                                  color: kForegroundColour,
+                                  child: books.length == 0
+                                      ? Center(
+                                          child: Text(
+                                            " 'Search by Name' ",
+                                            style: TextStyle(
+                                                color: kFontColour,
+                                                fontSize: 18),
+                                          ),
+                                        )
+                                      : ScrollConfiguration(
+                                          behavior: BounceScroll(),
+                                          child: ListView.builder(
+                                              itemCount: books.length,
+                                              itemBuilder: (context, index) {
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8.0,
+                                                          right: 8,
+                                                          bottom: 8,
+                                                          top: 4),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: <Widget>[
+                                                      /*Text(
+                                                        books[index].id,
+                                                        style: TextStyle(
+                                                          color: Color(0xffd5c0f4)
+                                                        ),
+
+                                                         ),*/
+                                                      IntrinsicHeight(
+                                                        child: Text(
+                                                          books[index].name,
+                                                          style: TextStyle(
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              color:
+                                                                  kFontColour),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      SizedBox(
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        child: Divider(
+                                                          color: Colors.black,
+                                                          thickness: 1.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                );
+                                              }),
+                                        ),
+                                ),
+                              )
+                            ],
+                          )),
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

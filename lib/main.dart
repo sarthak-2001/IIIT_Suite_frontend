@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iiit_suite/src/constants.dart';
 import 'package:iiit_suite/src/repository/bookmark_repository.dart';
+import 'package:iiit_suite/src/screens/homePages_screen.dart';
 import 'package:iiit_suite/src/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +42,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _register();
     _checkConnection();
@@ -67,6 +67,9 @@ class _MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(
       builder: (context) => BookmarkDao(),
       child: MaterialApp(
+        routes: {
+          '/home': (context) => Pages(),
+        },
         debugShowCheckedModeBanner: false,
         title: 'IIIT Suite',
         theme: ThemeData(

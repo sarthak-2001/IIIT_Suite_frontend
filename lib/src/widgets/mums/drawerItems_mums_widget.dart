@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iiit_suite/src/screens/api_screen.dart';
 import 'package:iiit_suite/src/screens/devlopers_screen.dart';
+import 'package:iiit_suite/src/screens/homePages_screen.dart';
 import 'package:iiit_suite/src/screens/mums/attendance_screen.dart';
 import 'package:iiit_suite/src/screens/mums/bookSearch_screen.dart';
 import 'package:iiit_suite/src/screens/mums/facultySearch_screen.dart';
@@ -34,7 +35,7 @@ class DrawerItemsMums extends StatelessWidget {
             ),
             DrawerEntries(
               title: 'Notice board',
-              route: NoticeListScreen(),
+              route: Pages(),
             ),
             DrawerEntries(
               title: 'Intranet Resources',
