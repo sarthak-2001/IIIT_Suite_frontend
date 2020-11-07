@@ -22,16 +22,15 @@ Future<bool> login(String id, String password) async {
 }
 
 Future<String> getName(String id, String password) async {
-  String name;
+  String studentName;
   try {
-    Response response = await Dio().post(
-        'https://sarthak-mums-iiit.herokuapp.com/name',
-        data: {"uid": id, "pwd": password});
+    Response response =
+        await Dio().post(nameRequest, data: {"uid": id, "pwd": password});
 //    print(response);
-    name = response.data['name'];
-    name = name.toString();
-    print(name);
-    return name;
+    studentName = response.data['name'];
+    studentName = studentName.toString();
+    print(studentName);
+    return studentName;
   } catch (e) {
     print(e);
 //    Fluttertoast.showToast(

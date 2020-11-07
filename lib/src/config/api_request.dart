@@ -9,4 +9,4 @@ String intranet = "http://placement.iiit-bh.ac.in/api/hibi/intra";
 String notice = "http://placement.iiit-bh.ac.in/api/hibi/notices";
 String semesters = "http://placement.iiit-bh.ac.in/api/hibi/sem";
 String student = "http://placement.iiit-bh.ac.in/api/hibi/students";
-String name = "http://placement.iiit-bh.ac.in/api/hibi/name";
+String nameRequest = "http://placement.iiit-bh.ac.in/api/hibi/name";
