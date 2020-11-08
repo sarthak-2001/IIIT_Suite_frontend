@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "519400408720-55bh7damabmcqov34f1a9t8vsc6smk0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarthakbrahma.iiit_suite",
+            "certificate_hash": "f41908701a642af2b81b81947cd26d59fa48d708"
+          }
+        },
+        {
           "client_id": "519400408720-ihehnkm9fntpiuk0maiprh2gvljgkuu7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
